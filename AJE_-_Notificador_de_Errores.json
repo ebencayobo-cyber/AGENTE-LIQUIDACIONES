@@ -1,0 +1,61 @@
+{
+  "name": "AJE - Notificador de Errores (Error Workflow)",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.errorTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "err-trigger-0001",
+      "name": "Error Trigger"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://graph.facebook.com/v19.0/{{ $vars.WA_PHONE_ID }}/messages",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "whatsAppApi",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"messaging_product\": \"whatsapp\",\n  \"to\": \"59163332108\",\n  \"type\": \"text\",\n  \"text\": {\n    \"body\": \"🚨 *ERROR EN N8N*\\n\\n📋 *Workflow:* {{ $json.workflow.name }}\\n🔴 *Nodo:* {{ $json.execution.lastNodeExecuted || 'desconocido' }}\\n💬 *Error:* {{ ($json.execution.error && $json.execution.error.message) ? $json.execution.error.message : 'sin detalle' }}\\n🕐 *Hora:* {{ $now.toFormat('dd/MM/yyyy HH:mm') }}\\n\\n🔗 ID ejecución: {{ $json.execution.id }}\"\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        240,
+        0
+      ],
+      "id": "err-notify-0002",
+      "name": "Notificar Admin por WhatsApp",
+      "credentials": {
+        "whatsAppApi": {
+          "id": "4T8C3J0AOaKU46VD",
+          "name": "WhatsApp account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Error Trigger": {
+      "main": [
+        [
+          {
+            "node": "Notificar Admin por WhatsApp",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "tags": []
+}
