@@ -38,10 +38,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        -15136,
-        6688
+        -17168,
+        6352
       ],
-      "id": "abec484f-3f90-4465-b764-481ac7c905b2",
+      "id": "c59a123e-e259-43fd-bb55-d5ebca76e556",
       "name": "VERIF SESION",
       "alwaysOutputData": false
     },
@@ -73,10 +73,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        -15024,
-        7376
+        -17056,
+        7040
       ],
-      "id": "65582b5a-b8b1-4009-a151-b6b50c2cc7a7",
+      "id": "70feb2de-b52d-4ce3-b6e7-0a31ceff097d",
       "name": "IS TEXT?",
       "alwaysOutputData": false
     },
@@ -108,10 +108,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        -14768,
-        7360
+        -16800,
+        7024
       ],
-      "id": "be784eff-3eaa-41f4-b90d-b82a8dc1bcf6",
+      "id": "8cebbdc7-c772-4bac-8825-c38e0ba39c95",
       "name": "IS GUIA?"
     },
     {
@@ -142,10 +142,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        -14096,
-        7344
+        -16128,
+        7008
       ],
-      "id": "81638684-9976-4ecf-8cfa-ac02787fbcce",
+      "id": "edc45228-6b4b-46a4-b5be-b5428588be9f",
       "name": "encontro resultado"
     },
     {
@@ -322,10 +322,10 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        -12656,
-        7728
+        -14688,
+        7392
       ],
-      "id": "34dc3d7d-3573-41fb-ac03-f38e8db3a7e4",
+      "id": "60e8acc7-e83d-4978-871d-7369517dfc6d",
       "name": "Realiza los registros",
       "executeOnce": true,
       "credentials": {
@@ -344,10 +344,10 @@
       "type": "@n8n/n8n-nodes-langchain.chainLlm",
       "typeVersion": 1.9,
       "position": [
-        -14656,
-        7520
+        -16688,
+        7184
       ],
-      "id": "0b4724ac-9971-403f-baae-887311a6eace",
+      "id": "c8ec1e9f-1944-42ac-b534-2fec62a73285",
       "name": "Basic LLM Chain"
     },
     {
@@ -358,10 +358,10 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
       "typeVersion": 1,
       "position": [
-        -14896,
-        7632
+        -16928,
+        7296
       ],
-      "id": "b444bf4c-6e11-4504-8867-29ee04944934",
+      "id": "06e7fd24-efc5-4c72-ab78-3896e111dcc4",
       "name": "Groq Chat Model",
       "credentials": {
         "groqApi": {
@@ -381,10 +381,10 @@
       "type": "n8n-nodes-base.whatsApp",
       "typeVersion": 1.1,
       "position": [
-        -14368,
-        7520
+        -16400,
+        7184
       ],
-      "id": "0683c1b7-76ed-46a5-bde3-992054070f58",
+      "id": "6d7b8aa3-b3b8-42c2-86be-85ed59a1ce28",
       "name": "Saludo inicial",
       "webhookId": "15b2fb4c-4311-49c2-8135-40aa1c89f7ed",
       "credentials": {
@@ -425,10 +425,10 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        -14272,
-        7344
+        -16304,
+        7008
       ],
-      "id": "64fad42b-e876-4397-a61c-dcf42231573e",
+      "id": "4820ff81-c46b-4982-b330-2294f42e6f89",
       "name": "buscamos la guia",
       "alwaysOutputData": true,
       "executeOnce": false,
@@ -450,10 +450,10 @@
       "type": "n8n-nodes-base.whatsApp",
       "typeVersion": 1.1,
       "position": [
-        -13984,
-        7520
+        -16016,
+        7184
       ],
-      "id": "2665fe36-1044-499f-93cd-6c1f2a775c51",
+      "id": "5744f208-3f0c-4370-b17e-9fa2876b8d18",
       "name": "Mensaje no se encontro guia",
       "webhookId": "64db4ca6-d2e9-4be4-af7f-b7b9c44c0e19",
       "credentials": {
@@ -474,10 +474,10 @@
       "type": "n8n-nodes-base.whatsApp",
       "typeVersion": 1.1,
       "position": [
-        -14608,
-        5296
+        -16640,
+        4960
       ],
-      "id": "bac99ed7-1ba1-4523-9dfb-d4d7aec99f43",
+      "id": "2e8331da-2deb-47c5-8140-b674e7354270",
       "name": "Confirmación inicio de sesion",
       "webhookId": "fabac3c6-9657-44d1-9e5f-5eddeb3875e1",
       "credentials": {
@@ -515,10 +515,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        -15008,
-        6512
+        -17056,
+        6176
       ],
-      "id": "a2ff7d8c-49da-4aeb-be30-894c83113568",
+      "id": "92de851f-5c18-4407-80b4-6618757a7052",
       "name": "Es IMG?"
     },
     {
@@ -532,10 +532,10 @@
       "type": "n8n-nodes-base.whatsApp",
       "typeVersion": 1.1,
       "position": [
-        -13616,
-        6784
+        -15648,
+        6448
       ],
-      "id": "87fd5a07-d678-4d76-b5d5-13f250339fba",
+      "id": "64abde5b-06b1-4aa5-980a-73343157db4e",
       "name": "informe liquidacion",
       "webhookId": "c4b82505-b646-48f8-9566-2b7bc2259355",
       "credentials": {
@@ -554,10 +554,10 @@
       "type": "n8n-nodes-base.whatsApp",
       "typeVersion": 1.1,
       "position": [
-        -14752,
-        6496
+        -16896,
+        6160
       ],
-      "id": "efabea60-dc3c-4fb3-bac5-15eb4e114916",
+      "id": "f3f76063-dd36-40c3-b7d3-838adbc47eb3",
       "name": "OBTENER ID DE LA IMG",
       "webhookId": "5e1d66db-508a-4034-81c2-6ca94bc00b85",
       "credentials": {
@@ -581,10 +581,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.4,
       "position": [
-        -14576,
-        6496
+        -16736,
+        6160
       ],
-      "id": "be01881e-1625-4ac7-a229-d3505771b397",
+      "id": "8541550a-5010-436a-8c39-8e33da94ca51",
       "name": "DESCARGAR IMG",
       "credentials": {
         "whatsAppApi": {
@@ -600,10 +600,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -14416,
-        6496
+        -16576,
+        6160
       ],
-      "id": "9cf00a75-2b84-4e0d-bbcb-61807b2b26e1",
+      "id": "80fa7913-fb11-4c4d-9bdd-bf1a800c78bd",
       "name": "CONVERTIR A BASE64"
     },
     {
@@ -614,16 +614,16 @@
         "nodeCredentialType": "groqApi",
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\n  \"model\": \"{{ $vars.IA_MODEL_VISION }}\",\n  \"messages\": [\n    {\n      \"role\": \"user\",\n      \"content\": [\n        {\n          \"type\": \"text\",\n          \"text\": \"Eres un extractor de datos de comprobantes de pago bolivianos. Analiza esta imagen y extrae TODOS los datos disponibles en formato JSON sin explicaciones ni texto adicional.\\n\\nPara cada campo devuelve un objeto con \\\"valor\\\" y \\\"confianza\\\".\\n\\n━━━ REGLAS ESTRICTAS DE CONFIANZA ━━━\\n- 1.0 → perfectamente claro, nítido, sin ambigüedad visual.\\n- 0.8 → legible pero con ligera duda (borroso, pequeño o parcialmente visible).\\n- 0.5 → parcialmente legible o inferido.\\n- 0.2 → muy dudoso, incompleto o apenas visible.\\n- 0.0 → no se puede leer → valor: null.\\n- Si el valor fue inferido → confianza <= 0.5.\\n- Si hay desenfoque o corte → confianza <= 0.8.\\n- PROHIBIDO usar 1.0 si la imagen no es perfectamente clara.\\n\\nAUTOVERIFICACIÓN:\\nAntes de asignar confianza, evalúa si el texto es claramente visible o lo estás deduciendo.\\n\\n━━━ REGLAS DE EXTRACCIÓN POR CAMPO ━━━\\n\\n[BANCO_BILLETERA]\\n- Es SIEMPRE el banco o billetera que RECIBE el dinero.\\n- NUNCA puede ser el nombre de una empresa, persona o beneficiario.\\n- En depósitos bancarios físicos, el banco destino es el banco donde está abierta la cuenta, identificado por el membrete, logo o formato del comprobante.\\n- Billeteras digitales válidas: Yape, Yasta, Tigo Money, Altoke, Simple, Max, MiNube.\\n- Devuelve el nombre normalizado y simplificado: \\\"BCP\\\", \\\"Banco Unión\\\", \\\"Banco Solidario\\\", \\\"Banco Económico\\\", \\\"Banco Ganadero\\\", \\\"Banco de Crédito\\\", \\\"Tigo Money\\\", \\\"Yasta\\\", etc.\\n- Comprobantes del Banco Económico pueden no mostrar explícitamente el logo o el nombre del banco.\\n- Si el comprobante presenta un formato de impresión matricial o ticket con texto azul y encabezados como:\\n  \\\"CUENTAS CORRIENTES\\\",\\n  \\\"DEPOSITO DE EFECTIVO\\\",\\n  \\\"EN BOLIVIANOS\\\",\\n  \\\"N.Dep.\\\",\\n  \\\"Cta.Nro.\\\",\\n  \\\"PAS:\\\",\\n  \\\"TEP:\\\",\\n  \\\"Antes de firmar verifique los datos\\\",\\n  entonces identificar el banco como \\\"Banco Económico\\\".\\n- Si además aparece el NIT 1015403021, considerar con alta confianza que corresponde a Banco Económico.\\n\\n[BANCO_ORIGEN]\\n- Es el banco o billetera desde donde se origina el pago.\\n- Puede ser null si no aparece.\\n\\n[CUENTA_DESTINO]\\n- Extrae únicamente los caracteres visibles de la cuenta destino.\\n- La cuenta puede contener números, letras y caracteres de ocultamiento como X, x o *.\\n- Conserva exactamente los caracteres visibles y en el mismo orden.\\n- Ejemplos válidos: \\\"701XXXX86392\\\", \\\"701******392\\\", \\\"ABC123456\\\", \\\"250****368\\\".\\n- Elimina únicamente texto descriptivo como \\\"CTE BOL\\\", \\\"Cuenta\\\", \\\"Caja de ahorro\\\", \\\"Cta.\\\", \\\"Destino\\\".\\n- Si aparecen dos números o cuentas, identifica la cuenta destino mediante etiquetas como: \\\"A:\\\", \\\"Para:\\\", \\\"Destino:\\\", \\\"Cuenta destino\\\", \\\"Cuenta crédito\\\", \\\"Cta. Destino\\\", \\\"Se acreditó a la cuenta\\\".\\n- En caso de ambigüedad, prioriza la cuenta asociada al nombre del beneficiario.\\n\\n[CUENTA_ORIGEN]\\n- Extrae únicamente los caracteres visibles de la cuenta origen.\\n- La cuenta puede contener números, letras y caracteres de ocultamiento como X, x o *.\\n- Conserva exactamente los caracteres visibles y en el mismo orden.\\n- Ejemplos válidos: \\\"250****368\\\", \\\"ABC987654\\\".\\n- Si no aparece, devolver null.\\n\\n[REFERENCIA]\\n- Es el identificador único de la operación o comprobante.\\n- Puede aparecer con cualquiera de las siguientes etiquetas:\\n  \\\"Referencia\\\",\\n  \\\"Bancarización\\\",\\n  \\\"Transacción N°\\\",\\n  \\\"Transaccion N°\\\",\\n  \\\"N° de Transacción\\\",\\n  \\\"Número de Transacción\\\",\\n  \\\"Nro. de operación\\\",\\n  \\\"Nro de operación\\\",\\n  \\\"Número de operación\\\",\\n  \\\"Nro. transacción\\\",\\n  \\\"Nro Transacción\\\",\\n  \\\"ID de operación\\\",\\n  \\\"Código de operación\\\",\\n  \\\"Nro. comprobante\\\",\\n  \\\"N.Dep.\\\",\\n  \\\"No. depósito\\\".\\n- Si el campo \\\"Referencia\\\" contiene únicamente el nombre del beneficiario o de una empresa/persona (por ejemplo \\\"INDUSTRIAS AJEBOLIVIA S A\\\"), NO debe usarse como referencia.\\n- En ese caso, buscar otros campos como \\\"Transacción N°\\\", \\\"Bancarización\\\", \\\"Nro. de operación\\\", \\\"N.Dep.\\\" u otros identificadores equivalentes y utilizar ese valor como la referencia principal.\\n- La referencia puede contener:\\n  - Solo números.\\n  - Letras y números.\\n  - Guiones.\\n  - Otros caracteres alfanuméricos.\\n- Ejemplos válidos:\\n  \\\"14262605028660148167\\\"\\n  \\\"2P61462500\\\"\\n  \\\"1003437907\\\"\\n  \\\"ABC-2026-001\\\".\\n- No es obligatorio que sea exclusivamente numérica.\\n- NUNCA usar un nombre de empresa o persona como referencia.\\n- Si existen varios identificadores posibles, priorizar en este orden:\\n  1. Transacción N°\\n  2. Bancarización\\n  3. Nro. de operación\\n  4. ID de operación\\n  5. Nro. comprobante\\n  6. N.Dep.\\n  7. Referencia (solo si no es un nombre).\\n- Si no se encuentra ningún identificador real, devolver null.\\n\\n[NOMBRE_BENEFICIARIO]\\n- Es el nombre de la persona o empresa que RECIBE el pago.\\n- En comprobantes de depósito físico bancario, el encabezado con nombre de empresa es el BENEFICIARIO, no el banco.\\n- Valores esperados: \\\"INDUSTRIAS AJE BOLIVIA\\\", \\\"AJE BOLIVIA\\\", \\\"AJE GROUP\\\", \\\"INDUSTRIAS AJEBOLIVIA S.A.\\\".\\n\\n[NOMBRE_DEPOSITANTE]\\n- Es el nombre de quien REALIZA el pago (el transportista).\\n\\n[TIPO_PAGO]\\n- Valores posibles: \\\"Yape\\\" | \\\"QR\\\" | \\\"transferencia\\\" | \\\"deposito_efectivo\\\" | \\\"deposito_cuenta\\\" | \\\"Tigo Money\\\" | \\\"altoke\\\" | \\\"otro\\\".\\n\\n[MONTO]\\n- Número decimal sin separadores de miles.\\n\\n[FECHA]\\n- Formato \\\"YYYY-MM-DD\\\" o null.\\n\\n[HORA]\\n- Formato \\\"HH:MM:SS\\\" o null.\\n\\nDevuelve SOLO el JSON con esta estructura:\\n\\n{\\n  \\\"monto\\\": {\\\"valor\\\": (número decimal), \\\"confianza\\\": (0.0-1.0)},\\n  \\\"tipo_pago\\\": {\\\"valor\\\": (string), \\\"confianza\\\": (0.0-1.0)},\\n  \\\"referencia\\\": {\\\"valor\\\": (código alfanumérico o null), \\\"confianza\\\": (0.0-1.0)},\\n  \\\"fecha\\\": {\\\"valor\\\": (\\\"YYYY-MM-DD\\\" o null), \\\"confianza\\\": (0.0-1.0)},\\n  \\\"hora\\\": {\\\"valor\\\": (\\\"HH:MM:SS\\\" o null), \\\"confianza\\\": (0.0-1.0)},\\n  \\\"banco_billetera\\\": {\\\"valor\\\": (nombre normalizado del banco/billetera DESTINO o null), \\\"confianza\\\": (0.0-1.0)},\\n  \\\"banco_origen\\\": {\\\"valor\\\": (nombre del banco/billetera ORIGEN o null), \\\"confianza\\\": (0.0-1.0)},\\n  \\\"cuenta_destino\\\": {\\\"valor\\\": (cadena con caracteres visibles o null), \\\"confianza\\\": (0.0-1.0)},\\n  \\\"cuenta_origen\\\": {\\\"valor\\\": (cadena con caracteres visibles o null), \\\"confianza\\\": (0.0-1.0)},\\n  \\\"nombre_depositante\\\": {\\\"valor\\\": (nombre del pagador o null), \\\"confianza\\\": (0.0-1.0)},\\n  \\\"nombre_beneficiario\\\": {\\\"valor\\\": (nombre del receptor o null), \\\"confianza\\\": (0.0-1.0)},\\n  \\\"agencia\\\": {\\\"valor\\\": (agencia o sucursal o null), \\\"confianza\\\": (0.0-1.0)},\\n  \\\"legible\\\": (true si monto.confianza >= 0.7 Y referencia.confianza >= 0.7, false en caso contrario)\\n}\"\n        },\n        {\n          \"type\": \"image_url\",\n          \"image_url\": {\n            \"url\": \"data:{{ $json.imageMimeType }};base64,{{ $json.imageBase64 }}\"\n          }\n        }\n      ]\n    }\n  ]\n}",
+        "jsonBody": "={\n  \"model\": \"{{ $vars.IA_MODEL_VISION }}\",\n  \"messages\": [\n    {\n      \"role\": \"user\",\n      \"content\": [\n        {\n          \"type\": \"text\",\n          \"text\": {{ JSON.stringify($json.promptComprobante) }}\n        },\n        {\n          \"type\": \"image_url\",\n          \"image_url\": {\n            \"url\": \"data:{{ $json.imageMimeType }};base64,{{ $json.imageBase64 }}\"\n          }\n        }\n      ]\n    }\n  ]\n}",
         "options": {}
       },
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.4,
       "position": [
-        -14224,
-        6496
+        -16096,
+        6160
       ],
-      "id": "4af69355-93a3-4316-80b5-3c9003843aa2",
+      "id": "6ad342b2-5d1c-40e0-8acd-31d62b10c86f",
       "name": "ANALIZAR CON GROQ",
       "credentials": {
         "groqApi": {
@@ -639,10 +639,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -14064,
-        6496
+        -15936,
+        6160
       ],
-      "id": "7f34e3d4-b745-4a54-9175-98662a4606ca",
+      "id": "91861d7a-8170-4dc3-a3cb-b8c6d38d5055",
       "name": "FILTRAR DATOS"
     },
     {
@@ -673,10 +673,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        -13104,
-        6784
+        -15136,
+        6448
       ],
-      "id": "5990615e-30ea-44c3-a92e-928c5732ec6e",
+      "id": "7572f873-52e8-4de2-bafb-068e123b509d",
       "name": "existe comprobante?"
     },
     {
@@ -979,10 +979,10 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        -12064,
-        6912
+        -14096,
+        6576
       ],
-      "id": "660f89e2-9277-4227-8bfd-a20ff6e3490c",
+      "id": "f46c3c3e-1a3d-46e3-a2a4-4e996ca760b3",
       "name": "registrar comprobante",
       "credentials": {
         "googleSheetsOAuth2Api": {
@@ -1002,10 +1002,10 @@
       "type": "n8n-nodes-base.whatsApp",
       "typeVersion": 1.1,
       "position": [
-        -12992,
-        6640
+        -15024,
+        6304
       ],
-      "id": "83c3301a-1839-43ee-9ae6-8f133e6a0be0",
+      "id": "b60cdbe7-cceb-4a1b-98c1-5d9e7c7265b5",
       "name": "Error comprobante ya existe",
       "webhookId": "157ff2e6-5417-4cb8-accf-778dfeb9dae4",
       "credentials": {
@@ -1043,10 +1043,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        -12816,
-        6928
+        -14848,
+        6592
       ],
-      "id": "40062b4a-56de-489c-8a53-a0795580fe88",
+      "id": "229343ff-d5b9-4ab2-9e28-099b83ef0bfb",
       "name": "existe carpeta?"
     },
     {
@@ -1063,10 +1063,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.4,
       "position": [
-        -12592,
-        6912
+        -14624,
+        6576
       ],
-      "id": "69903b1a-18c9-453c-8182-40be7c183e01",
+      "id": "4028a575-0229-4c50-aab8-a9624d046134",
       "name": "DESCARGAR IMG1",
       "credentials": {
         "whatsAppApi": {
@@ -1086,10 +1086,10 @@
       "type": "n8n-nodes-base.whatsApp",
       "typeVersion": 1.1,
       "position": [
-        -14064,
-        5936
+        -16096,
+        5600
       ],
-      "id": "6473c639-5efb-4da8-91a3-a3400f94e5db",
+      "id": "227464e8-8498-434a-b96a-a048a595e5e2",
       "name": "Confirmación de registro exitoso",
       "webhookId": "89f42b6e-8647-4154-9eb8-2813b53158d4",
       "credentials": {
@@ -1247,10 +1247,10 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        -14544,
-        5824
+        -16576,
+        5488
       ],
-      "id": "33b66226-7c32-4523-8def-b82f6637b7a7",
+      "id": "e046c21b-d373-43bd-aef3-44e75b07d46d",
       "name": "Actualizar la sesión con los montos",
       "alwaysOutputData": true,
       "credentials": {
@@ -1267,10 +1267,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -13888,
-        6496
+        -15792,
+        6160
       ],
-      "id": "4eb45e92-b7e7-4acf-b4c3-33ff6fe65ead",
+      "id": "79078c16-0168-428f-b39f-f2b65f4ef996",
       "name": "Validar datos"
     },
     {
@@ -1300,10 +1300,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        -13392,
-        6496
+        -15424,
+        6160
       ],
-      "id": "29a76c3f-24a0-4760-ad20-6b34a681b126",
+      "id": "1410a13f-6691-4e0f-95a5-adcebde3685f",
       "name": "No Es legible?",
       "alwaysOutputData": false
     },
@@ -1318,10 +1318,10 @@
       "type": "n8n-nodes-base.whatsApp",
       "typeVersion": 1.1,
       "position": [
-        -14896,
-        6336
+        -16880,
+        6000
       ],
-      "id": "f5cb2bc6-ceff-4fd1-abe0-b1d245fe8412",
+      "id": "867e9182-449f-4c8f-9d9a-61b0c64c243d",
       "name": "Procesando...",
       "webhookId": "d06b822f-7644-4c40-aec4-90d092004bb2",
       "credentials": {
@@ -1342,10 +1342,10 @@
       "type": "n8n-nodes-base.whatsApp",
       "typeVersion": 1.1,
       "position": [
-        -13616,
-        6496
+        -15648,
+        6160
       ],
-      "id": "cf3fd95b-e65b-419e-8dbf-b0a54038487c",
+      "id": "97cf4f4c-8ee0-4e76-9010-a9f8e5798b6b",
       "name": "Analizando img...",
       "webhookId": "d06b822f-7644-4c40-aec4-90d092004bb2",
       "credentials": {
@@ -1366,10 +1366,10 @@
       "type": "n8n-nodes-base.whatsApp",
       "typeVersion": 1.1,
       "position": [
-        -12528,
-        6592
+        -14560,
+        6256
       ],
-      "id": "9f0128f0-b104-4f43-a3c7-75facd2e6299",
+      "id": "47b23c64-b23d-4445-84c2-3ea299456e07",
       "name": "Error en la img",
       "webhookId": "5f698701-248d-42db-8e49-0626ddc7adde",
       "credentials": {
@@ -1393,10 +1393,10 @@
       "type": "n8n-nodes-base.whatsAppTrigger",
       "typeVersion": 1,
       "position": [
-        -17264,
-        5328
+        -19296,
+        4992
       ],
-      "id": "d1531f5c-d8d6-4efe-a95f-b34103c4d363",
+      "id": "8c672dad-b96b-4305-b797-eedab8e069ff",
       "name": "User envia mensaje",
       "webhookId": "135a2cd3-59bc-49ff-80df-3164a8615ea3",
       "credentials": {
@@ -1413,10 +1413,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -16928,
-        5328
+        -18960,
+        4992
       ],
-      "id": "3ee2d65c-4f1f-4768-bbd5-f4dcaa20dffc",
+      "id": "de1d1f81-d5a9-4148-8634-27ca230b93b7",
       "name": "Mapeamos datos del mensaje"
     },
     {
@@ -1457,10 +1457,10 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        -15344,
-        6688
+        -17376,
+        6352
       ],
-      "id": "5a9dee48-1cab-4a87-bd65-1ae7a5ea8081",
+      "id": "98f656bc-70e0-4ae1-a6e1-735bbea585e0",
       "name": "Buscamos si tiene sesion activa",
       "alwaysOutputData": true,
       "retryOnFail": true,
@@ -1506,10 +1506,10 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        -13280,
-        6784
+        -15312,
+        6448
       ],
-      "id": "c38efd34-e2e6-43a1-bdf5-dc1503e629eb",
+      "id": "4f9b4df5-18a8-4d04-9306-a09f6a57b025",
       "name": "Buscamos si existe comprobante",
       "alwaysOutputData": true,
       "credentials": {
@@ -1540,10 +1540,10 @@
       "type": "n8n-nodes-base.googleDrive",
       "typeVersion": 3,
       "position": [
-        -12992,
-        6928
+        -15024,
+        6592
       ],
-      "id": "8656f8a4-6703-4d7f-a1a4-6c4addc04c6a",
+      "id": "e8ee2f4b-4059-414f-a366-3d54159b309d",
       "name": "Buscamos la carpeta del dia",
       "alwaysOutputData": true,
       "credentials": {
@@ -1572,10 +1572,10 @@
       "type": "n8n-nodes-base.googleDrive",
       "typeVersion": 3,
       "position": [
-        -12704,
-        7040
+        -14736,
+        6704
       ],
-      "id": "c6d3e44b-eb61-46c1-824e-831fd826dd5e",
+      "id": "d32ddb03-1a56-423b-8cf4-d5fee2eec85c",
       "name": "Creamos la carpeta del dia",
       "credentials": {
         "googleDriveOAuth2Api": {
@@ -1604,10 +1604,10 @@
       "type": "n8n-nodes-base.googleDrive",
       "typeVersion": 3,
       "position": [
-        -12416,
-        6912
+        -14448,
+        6576
       ],
-      "id": "04a1fb80-049a-4eeb-a8a6-1c092a0229ab",
+      "id": "bb56d149-d060-4d3b-98c0-b7a1bd17b160",
       "name": "Guardamos la imagen",
       "credentials": {
         "googleDriveOAuth2Api": {
@@ -1636,10 +1636,10 @@
       "type": "n8n-nodes-base.googleDrive",
       "typeVersion": 3,
       "position": [
-        -12240,
-        6912
+        -14272,
+        6576
       ],
-      "id": "0b85cd70-f196-43a4-98ed-4a736d69ea29",
+      "id": "01ff28d7-8734-4da9-aaa1-9a81130a8a4b",
       "name": "Damos permisos de lectura a la img",
       "credentials": {
         "googleDriveOAuth2Api": {
@@ -1657,10 +1657,10 @@
       "type": "@n8n/n8n-nodes-langchain.chainLlm",
       "typeVersion": 1.9,
       "position": [
-        -14896,
-        6832
+        -16928,
+        6496
       ],
-      "id": "504054b9-871a-4e3c-a765-303b39475fdc",
+      "id": "4f6fb75e-7953-40cb-8408-9a4413572daf",
       "name": "Intencion del mensaje"
     },
     {
@@ -1692,10 +1692,10 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        -14304,
-        6784
+        -16336,
+        6448
       ],
-      "id": "3646e98a-98c3-4bee-8b4b-1b516149cb5f",
+      "id": "56ad267c-a164-4ccd-a274-9081daeea7d2",
       "name": "Buscamos su liquidacion",
       "alwaysOutputData": true,
       "credentials": {
@@ -1716,10 +1716,10 @@
       "type": "n8n-nodes-base.whatsApp",
       "typeVersion": 1.1,
       "position": [
-        -14304,
-        7088
+        -16336,
+        6752
       ],
-      "id": "aa0920be-45b9-4849-ab93-648a89a5fad5",
+      "id": "26ad3afc-ce5d-4774-a4bf-28e1d869d72a",
       "name": "Error, solo info liquidacion",
       "webhookId": "2080cf82-a3e1-4e91-b54c-182b72424ea6",
       "credentials": {
@@ -1740,10 +1740,10 @@
       "type": "n8n-nodes-base.whatsApp",
       "typeVersion": 1.1,
       "position": [
-        -13744,
-        7728
+        -15776,
+        7392
       ],
-      "id": "52af8511-69f0-48d6-ae09-e62ed9bc25be",
+      "id": "0ec97c02-f421-43c9-8912-5ba7015b2938",
       "name": "MGenerico, Pedir guia",
       "webhookId": "4665739e-9237-4bae-a233-c7c5f43bcd3b",
       "credentials": {
@@ -1760,10 +1760,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -14128,
-        6784
+        -16160,
+        6448
       ],
-      "id": "4a258d16-408d-493c-b29c-a830fe182775",
+      "id": "1d654e29-66c7-4492-af2f-8e3f872f6db2",
       "name": "Mapear montos"
     },
     {
@@ -1773,10 +1773,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -14352,
-        5824
+        -16384,
+        5488
       ],
-      "id": "8ddfbf1b-fb1a-428e-b644-ce02f32f2ce2",
+      "id": "3fec6d02-38e6-4245-938a-fdbcd77f8ea8",
       "name": "Mapear montos1"
     },
     {
@@ -1793,10 +1793,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.4,
       "position": [
-        -12336,
-        7728
+        -14368,
+        7392
       ],
-      "id": "3664d29f-8a79-4c7c-aa1d-35bb00f6a335",
+      "id": "6861d7a7-602e-4b66-9c85-a6509c121fba",
       "name": "HTTP Request",
       "executeOnce": true,
       "credentials": {
@@ -1834,10 +1834,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        -15920,
-        5600
+        -17952,
+        5264
       ],
-      "id": "2e699994-41ef-400d-90da-fc7755f94517",
+      "id": "6145fde4-028d-4f0a-94bc-df05c37134e3",
       "name": "Is message int?"
     },
     {
@@ -1950,10 +1950,10 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.4,
       "position": [
-        -15664,
-        5552
+        -17696,
+        5216
       ],
-      "id": "5a5d343f-10a4-4803-95fc-96d99c88d883",
+      "id": "3eabe9bc-a9ba-4064-a412-03959f1bd770",
       "name": "Switch"
     },
     {
@@ -1991,10 +1991,10 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        -15552,
-        5392
+        -17584,
+        5056
       ],
-      "id": "de00e3a7-94c4-4190-a38d-54a80a9a9f26",
+      "id": "476f1ad5-ba56-4560-b440-629ce65a392f",
       "name": "Buscamos la sesion PENDIENTE",
       "alwaysOutputData": false,
       "credentials": {
@@ -2031,10 +2031,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        -15392,
-        5392
+        -17424,
+        5056
       ],
-      "id": "0c1c91ed-413e-428c-86fe-03ae769baa25",
+      "id": "3864915e-dd6b-4d86-96eb-043c6b57877e",
       "name": "acepta?"
     },
     {
@@ -2065,10 +2065,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        -15392,
-        5984
+        -17424,
+        5648
       ],
-      "id": "dcc41d81-9673-4824-8eb7-028003d23af1",
+      "id": "e1117d70-8fc1-4d63-bd2b-befefd45a5e4",
       "name": "confirma?"
     },
     {
@@ -2105,10 +2105,10 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        -15552,
-        5984
+        -17584,
+        5648
       ],
-      "id": "0eaf2d71-33cc-4088-ba92-569ccf22757f",
+      "id": "392bc36f-2d59-4d25-8a39-4141eee68ecb",
       "name": "Buscamos comprob PENDIENTE",
       "alwaysOutputData": false,
       "credentials": {
@@ -2276,10 +2276,10 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        -14816,
-        5296
+        -16848,
+        4960
       ],
-      "id": "c7582d28-c7fb-478b-a999-6b5d0eefcb4c",
+      "id": "450f5b76-fc0b-4af0-b9ef-b06081c2b203",
       "name": "ESTADO ACTIVO",
       "credentials": {
         "googleSheetsOAuth2Api": {
@@ -2310,10 +2310,10 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        -15008,
-        5632
+        -17040,
+        5296
       ],
-      "id": "9a10663f-2ab1-41c5-8927-6e725a427a7a",
+      "id": "2abe36cf-31ce-4b66-8454-55ff87219a85",
       "name": "ELIINAMOS FALSA SESION",
       "credentials": {
         "googleSheetsOAuth2Api": {
@@ -2333,10 +2333,10 @@
       "type": "n8n-nodes-base.whatsApp",
       "typeVersion": 1.1,
       "position": [
-        -14608,
-        5632
+        -16640,
+        5296
       ],
-      "id": "b7ff82c2-de7e-49f8-a772-c23ba9be992c",
+      "id": "f9467a99-9c3d-455e-8162-c6caf7ffc2de",
       "name": "Sesión cancelada",
       "webhookId": "fabac3c6-9657-44d1-9e5f-5eddeb3875e1",
       "credentials": {
@@ -2624,10 +2624,10 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        -14736,
-        5824
+        -16768,
+        5488
       ],
-      "id": "ede350b4-3fa5-4568-a9fb-238a4a383bd1",
+      "id": "f6e7fb16-5dfb-4a8d-b73c-5134e41b21f7",
       "name": "estado CONFIRMADO",
       "credentials": {
         "googleSheetsOAuth2Api": {
@@ -2647,10 +2647,10 @@
       "type": "n8n-nodes-base.whatsApp",
       "typeVersion": 1.1,
       "position": [
-        -15280,
-        6080
+        -17312,
+        5744
       ],
-      "id": "86a0971f-2fd3-406f-b71e-fee934e462e5",
+      "id": "3a3a477c-91a9-494d-b721-1c68c1f7654b",
       "name": "Cancelacion de comprobante",
       "webhookId": "fabac3c6-9657-44d1-9e5f-5eddeb3875e1",
       "credentials": {
@@ -2688,10 +2688,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        -14912,
-        7728
+        -16944,
+        7392
       ],
-      "id": "5eb6b133-e395-40ac-a3c8-cf222f413c03",
+      "id": "77fd34a1-3b12-4529-8dd6-b6b86c2144ea",
       "name": "Es IMG?1"
     },
     {
@@ -2703,10 +2703,10 @@
       "type": "n8n-nodes-base.whatsApp",
       "typeVersion": 1.1,
       "position": [
-        -14752,
-        7712
+        -16784,
+        7376
       ],
-      "id": "499223f3-0e0e-4d2b-af3f-ce1bbec3df2f",
+      "id": "0be5805c-a1d5-4815-a099-7b9b4a27824d",
       "name": "OBTENER ID DE LA IMG1",
       "webhookId": "5e1d66db-508a-4034-81c2-6ca94bc00b85",
       "credentials": {
@@ -2730,10 +2730,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.4,
       "position": [
-        -14592,
-        7712
+        -16624,
+        7376
       ],
-      "id": "1297d6f7-ac88-4c0f-8297-2cc5107b25a2",
+      "id": "de48302c-cb4d-4ec9-852b-401347c3c483",
       "name": "DESCARGAR IMG2",
       "credentials": {
         "whatsAppApi": {
@@ -2749,10 +2749,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -14432,
-        7712
+        -16464,
+        7376
       ],
-      "id": "f0f5afde-1f03-4edb-b5b5-15e22d698ffa",
+      "id": "366d56b5-5206-4e1c-8512-5cc6be18e4da",
       "name": "CONVERTIR A BASE"
     },
     {
@@ -2769,10 +2769,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.4,
       "position": [
-        -14288,
-        7712
+        -16320,
+        7376
       ],
-      "id": "0c7e0b7b-508c-4fbc-b056-73c62f5cdcc3",
+      "id": "6f3a46df-dfbc-40d5-bbb8-7cdde833e6cc",
       "name": "ANALIZAR CON GROQ1",
       "credentials": {
         "groqApi": {
@@ -2788,10 +2788,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -14128,
-        7712
+        -16160,
+        7376
       ],
-      "id": "f7ce7d38-7581-4e8f-b132-9d5bc887998e",
+      "id": "6cbbe301-d941-4178-9f63-e1a539294b02",
       "name": "FILTRAR DATOS1"
     },
     {
@@ -2822,10 +2822,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        -13952,
-        7712
+        -15984,
+        7376
       ],
-      "id": "7f50f2b1-f0d5-45fd-acfb-7d4d2f4dc069",
+      "id": "461ebceb-9cfc-4c9c-a8f5-1c25379d1c3f",
       "name": "IS GUIA?1"
     },
     {
@@ -2835,10 +2835,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -14480,
-        7344
+        -16512,
+        7008
       ],
-      "id": "9e61fb0b-7239-47a2-815a-974f267e6f7c",
+      "id": "86fb4456-23f4-49bb-926a-aa8c7a4d76d7",
       "name": "Normalizar Guia"
     },
     {
@@ -2848,10 +2848,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -15120,
-        5840
+        -17152,
+        5504
       ],
-      "id": "fc75a5ac-8ea4-412c-983b-e43b2eb366a9",
+      "id": "26ba23b2-61d4-4f4f-b6b3-40edf079981c",
       "name": "Validar restante liq"
     },
     {
@@ -2865,10 +2865,10 @@
       "type": "n8n-nodes-base.whatsApp",
       "typeVersion": 1.1,
       "position": [
-        -14736,
-        5984
+        -16768,
+        5648
       ],
-      "id": "5ccfde85-facb-4af0-bcae-816e57528300",
+      "id": "169757f4-2dfc-4c71-83d1-ca9170215ccb",
       "name": "Error restante negativo",
       "webhookId": "fabac3c6-9657-44d1-9e5f-5eddeb3875e1",
       "credentials": {
@@ -2906,10 +2906,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        -14960,
-        5840
+        -16992,
+        5504
       ],
-      "id": "c38056a8-cad2-4d63-80c3-a657af887da4",
+      "id": "9e4af689-733d-4a5e-b05a-0aade62480d6",
       "name": "Valido?"
     },
     {
@@ -2940,10 +2940,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        -14176,
-        5824
+        -16208,
+        5488
       ],
-      "id": "819c8f4a-463e-4b0c-9712-ea3e8da6a891",
+      "id": "6016eba5-61b7-499c-aaa8-d4d5378f61e8",
       "name": "liq completa?"
     },
     {
@@ -3104,10 +3104,10 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        -14064,
-        5648
+        -16096,
+        5312
       ],
-      "id": "9f3f3c2c-705b-4977-a3dc-0643358f6ebd",
+      "id": "5fbe8be9-edb8-411b-b416-1af52eabe8ee",
       "name": "COMPLETAR LIQ",
       "alwaysOutputData": true,
       "credentials": {
@@ -3128,10 +3128,10 @@
       "type": "n8n-nodes-base.whatsApp",
       "typeVersion": 1.1,
       "position": [
-        -13552,
-        5904
+        -15584,
+        5568
       ],
-      "id": "36089359-7446-4e1e-8c5f-5af1666ebd1d",
+      "id": "f7cb1f1b-05a9-4ee5-a052-de79624ef406",
       "name": "Confirmacion y finalizacion de la liquidacion",
       "webhookId": "fabac3c6-9657-44d1-9e5f-5eddeb3875e1",
       "credentials": {
@@ -3168,10 +3168,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        -13344,
-        7536
+        -15376,
+        7200
       ],
-      "id": "3360212b-e76c-4c26-8bc9-de0f9bd6cb89",
+      "id": "9f70bd2b-90ee-42e6-b6e5-1e9079a1e7f1",
       "name": "VERIF GUIA COMPLETADA"
     },
     {
@@ -3185,10 +3185,10 @@
       "type": "n8n-nodes-base.whatsApp",
       "typeVersion": 1.1,
       "position": [
-        -13184,
-        7520
+        -15216,
+        7184
       ],
-      "id": "a7bccc78-b79b-4be9-a098-df628ae46ed6",
+      "id": "8c1c984d-c3ff-4016-abfd-2f846e99054c",
       "name": "GUIA COMPLETA",
       "webhookId": "15b2fb4c-4311-49c2-8135-40aa1c89f7ed",
       "credentials": {
@@ -3233,10 +3233,10 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        -15280,
-        5840
+        -17312,
+        5504
       ],
-      "id": "aa7c2750-916b-4f00-a3ae-5cf5173a1bfd",
+      "id": "e4562a4d-debb-4d1b-af49-2f67e9e1c40b",
       "name": "Buscamos la sesion",
       "alwaysOutputData": true,
       "credentials": {
@@ -3281,10 +3281,10 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        -13504,
-        7536
+        -15536,
+        7200
       ],
-      "id": "d81975b0-a5be-4a89-acf3-c2b2842cc8e0",
+      "id": "c5b38a01-0a34-4bf2-bbab-edb9081178f4",
       "name": "Buscamos si sesion completa",
       "alwaysOutputData": true,
       "credentials": {
@@ -3316,10 +3316,10 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        -14528,
-        6080
+        -16560,
+        5744
       ],
-      "id": "2edc4d9a-95e7-477d-9a84-a08a8dd46a6d",
+      "id": "14893978-5453-42c2-afbc-8cbe05acf7b1",
       "name": "Eliminar registro",
       "credentials": {
         "googleSheetsOAuth2Api": {
@@ -3341,10 +3341,10 @@
       "type": "n8n-nodes-base.googleDrive",
       "typeVersion": 3,
       "position": [
-        -14352,
-        6080
+        -16384,
+        5744
       ],
-      "id": "03c94928-d8b6-4ce1-b2e8-3d17cfab3e9d",
+      "id": "5b29f423-cf2b-4a77-bb8f-be70284cb91e",
       "name": "Delete a file",
       "credentials": {
         "googleDriveOAuth2Api": {
@@ -3499,10 +3499,10 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        -12704,
-        6592
+        -14736,
+        6256
       ],
-      "id": "508d49b2-fb97-4e89-a9da-2c82a75585a8",
+      "id": "54ff29e9-40d5-4939-a1c6-899f27d2005d",
       "name": "reintentos ++",
       "credentials": {
         "googleSheetsOAuth2Api": {
@@ -3522,10 +3522,10 @@
       "type": "n8n-nodes-base.whatsApp",
       "typeVersion": 1.1,
       "position": [
-        -12528,
-        6368
+        -14560,
+        6032
       ],
-      "id": "6ae67636-ab57-4810-b6bb-047e930ec326",
+      "id": "6b44f233-060f-499f-a974-a2c79e9824a1",
       "name": "Error limite",
       "webhookId": "5f698701-248d-42db-8e49-0626ddc7adde",
       "credentials": {
@@ -3681,10 +3681,10 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        -12704,
-        6368
+        -14736,
+        6032
       ],
-      "id": "4abed05c-e96e-4b91-85d9-8b9b20bbfacf",
+      "id": "8b0cf891-10ec-4f06-8a9a-64cd2beadd13",
       "name": "reintentos 0",
       "alwaysOutputData": true,
       "credentials": {
@@ -3714,7 +3714,7 @@
         "columns": {
           "mappingMode": "defineBelow",
           "value": {
-            "guia": "={{ $('Buscamos la sesion').item.json.guia }}",
+            "guia": "={{ $('Buscamos comprob PENDIENTE').item.json.guia }}",
             "reintentos": "=0"
           },
           "matchingColumns": [
@@ -3841,10 +3841,10 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        -13280,
-        6080
+        -15312,
+        5744
       ],
-      "id": "cea0cdc1-82bf-42c7-bedf-3ff2c0ec5bf0",
+      "id": "c7183c6c-a0ec-4ef2-9305-94cb921c1fa2",
       "name": "reintentos ",
       "alwaysOutputData": true,
       "credentials": {
@@ -3882,10 +3882,10 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        -16768,
-        5328
+        -18800,
+        4992
       ],
-      "id": "c3ed6de7-033e-4a2f-a5a0-800f3d03a0da",
+      "id": "16449b5f-49a6-4932-b296-0e672a102ee5",
       "name": "Buscar autorizado",
       "alwaysOutputData": true,
       "credentials": {
@@ -3932,10 +3932,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        -16448,
-        5328
+        -18480,
+        4992
       ],
-      "id": "ee41b678-1e7b-4078-8096-f335fbdb69d3",
+      "id": "80ccc7ab-2f51-4b6c-92c9-51a6ce500cf2",
       "name": "Es autorizado?"
     },
     {
@@ -3966,10 +3966,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        -16128,
-        3952
+        -18160,
+        3616
       ],
-      "id": "ac15c07c-8ae0-4ad6-998d-309f5acd6875",
+      "id": "f61ac650-fbb1-4f2c-a017-4fbb783c2466",
       "name": "Is message int? (reporte)"
     },
     {
@@ -3986,10 +3986,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.4,
       "position": [
-        -14304,
-        4784
+        -16336,
+        4448
       ],
-      "id": "5c153020-397d-4b03-8510-d8ce3cb747cd",
+      "id": "d324c51b-c89f-4254-9650-f1ef5f7f47aa",
       "name": "Botón reporte del día",
       "credentials": {
         "whatsAppApi": {
@@ -4015,10 +4015,10 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        -14512,
-        4352
+        -16544,
+        4016
       ],
-      "id": "63252786-55d0-4c4e-bb5e-467e1cd51eaf",
+      "id": "11934ba9-34ce-47fe-abda-cdd6a0af68df",
       "name": "Leer referencias bancos",
       "alwaysOutputData": true,
       "executeOnce": true,
@@ -4036,10 +4036,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -14304,
-        4352
+        -16336,
+        4016
       ],
-      "id": "e40469b5-99f5-4497-bcf2-d5de5149071f",
+      "id": "6aa11b9e-b252-453a-b99c-d08e8e5a98fd",
       "name": "Transformar para reporte"
     },
     {
@@ -4070,10 +4070,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        -14096,
-        4352
+        -16128,
+        4016
       ],
-      "id": "c49d6235-510c-402d-99b6-54faf0a0e0cb",
+      "id": "80d6b816-ccd5-4dc1-9f0c-de31a608d4b1",
       "name": "¿Hay datos hoy?"
     },
     {
@@ -4087,10 +4087,10 @@
       "type": "n8n-nodes-base.whatsApp",
       "typeVersion": 1.1,
       "position": [
-        -13872,
-        4336
+        -15904,
+        4000
       ],
-      "id": "673a4279-9d55-49cb-bfd4-dfc6ec92a0ed",
+      "id": "98fd3c0e-279a-4af2-a62c-118f4232eab7",
       "name": "WA sin datos hoy",
       "webhookId": "206c6d24-c8c2-4c79-83e4-b102a35051b2",
       "credentials": {
@@ -4111,10 +4111,10 @@
       "type": "n8n-nodes-base.spreadsheetFile",
       "typeVersion": 2,
       "position": [
-        -13872,
-        4496
+        -15904,
+        4160
       ],
-      "id": "b428deb8-5f8d-49e7-b2a9-be327ac1f9b6",
+      "id": "eb74613e-23b2-419d-820b-73dba2aa6e8a",
       "name": "Generar Excel",
       "executeOnce": false
     },
@@ -4135,10 +4135,10 @@
       "type": "n8n-nodes-base.gmail",
       "typeVersion": 2.1,
       "position": [
-        -13680,
-        4496
+        -15712,
+        4160
       ],
-      "id": "4ce8052e-e752-4953-8280-54c8896a5649",
+      "id": "0c384292-80e2-4faa-a0e7-23686a2abc30",
       "name": "Enviar email con reporte",
       "webhookId": "69b11392-b5a5-4283-a9a9-7afb35615c68",
       "executeOnce": true,
@@ -4156,10 +4156,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -13488,
-        4496
+        -15520,
+        4160
       ],
-      "id": "217c7a1e-0bd4-455f-87e8-5a91ba3de086",
+      "id": "caf348a4-9de4-46e8-9666-1a40dc3aeda3",
       "name": "Preparar resumen WA"
     },
     {
@@ -4173,10 +4173,10 @@
       "type": "n8n-nodes-base.whatsApp",
       "typeVersion": 1.1,
       "position": [
-        -13296,
-        4496
+        -15328,
+        4160
       ],
-      "id": "7dab35d7-b788-4f0e-b1af-abd00af86871",
+      "id": "a82f2631-dbc0-4d82-b4f7-bfdfd72fbbe7",
       "name": "WA confirmación reporte",
       "webhookId": "69fa2c56-239c-4b4e-aaa3-db6edd897f66",
       "credentials": {
@@ -4193,10 +4193,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -14096,
-        4080
+        -16128,
+        3744
       ],
-      "id": "0b964079-1626-4be9-b514-f12e0f334848",
+      "id": "0d23993c-d9e0-40e5-b74b-4180360a0a7a",
       "name": "Preparar informe actual"
     },
     {
@@ -4210,10 +4210,10 @@
       "type": "n8n-nodes-base.whatsApp",
       "typeVersion": 1.1,
       "position": [
-        -13872,
-        4080
+        -15904,
+        3744
       ],
-      "id": "aa32c466-05c0-4225-abda-2f7995d01ef4",
+      "id": "dd070502-ba84-43a3-8200-78879f61baeb",
       "name": "WA informe actual",
       "webhookId": "41593cfd-ab31-4ecd-8e0c-32c3ffbe2b69",
       "credentials": {
@@ -4252,10 +4252,10 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        -16016,
-        4928
+        -18048,
+        4592
       ],
-      "id": "c70674c7-d92a-4010-a6e2-9a136692336d",
+      "id": "a6aae267-c0ed-4dd3-b18e-94e6c5f8f39f",
       "name": "Leer sesiones",
       "alwaysOutputData": true,
       "credentials": {
@@ -4411,10 +4411,10 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        -13504,
-        6640
+        -15536,
+        6304
       ],
-      "id": "77e793e0-b721-4e75-9a00-0ee91670dc1f",
+      "id": "e8e53568-2576-4c63-906c-43f95d43f264",
       "name": "Update Last Activity",
       "credentials": {
         "googleSheetsOAuth2Api": {
@@ -4444,10 +4444,10 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        -15872,
-        4928
+        -17904,
+        4592
       ],
-      "id": "0acc7f5c-b087-4cab-ae5e-75a3189a9309",
+      "id": "68cb5f1b-f565-49cf-9875-722f4bf0936b",
       "name": "Leer Liquidaciones",
       "alwaysOutputData": true,
       "credentials": {
@@ -4565,10 +4565,10 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.4,
       "position": [
-        -14608,
-        6800
+        -16640,
+        6464
       ],
-      "id": "a98caba4-7e29-479a-a046-4724e5ddd034",
+      "id": "b82cf2d9-d809-488a-9efe-207bdaf543a8",
       "name": "Switch1"
     },
     {
@@ -4582,10 +4582,10 @@
       "type": "n8n-nodes-base.whatsApp",
       "typeVersion": 1.1,
       "position": [
-        -14304,
-        6928
+        -16336,
+        6592
       ],
-      "id": "966d2e9f-6d79-4d7d-931a-92ef2fcf2f6d",
+      "id": "317bb275-c721-4afa-8370-a32f9ca912f4",
       "name": "Cierre de caja",
       "webhookId": "2080cf82-a3e1-4e91-b54c-182b72424ea6",
       "credentials": {
@@ -4623,10 +4623,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        -16016,
-        4704
+        -18048,
+        4368
       ],
-      "id": "ab9a38f8-2724-43d3-a527-f8033b00ec58",
+      "id": "b34b6976-a583-4d7e-b9e2-647dddae702f",
       "name": "IS GUIA?2"
     },
     {
@@ -4660,10 +4660,10 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        -15728,
-        4480
+        -17760,
+        4144
       ],
-      "id": "3fe334e2-def7-41b5-892b-c7c47b1f70c2",
+      "id": "0ef26cea-d8db-4d87-a7bd-c496e44de2e8",
       "name": "buscamos la guia1",
       "alwaysOutputData": true,
       "executeOnce": false,
@@ -4681,10 +4681,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -15904,
-        4480
+        -17936,
+        4144
       ],
-      "id": "b62461f5-49c9-4678-af45-24a9c15edfd0",
+      "id": "46d60865-b2f7-484b-a266-e989905fd880",
       "name": "Normalizar Guia1"
     },
     {
@@ -4896,10 +4896,10 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.4,
       "position": [
-        -15552,
-        3808
+        -17584,
+        3472
       ],
-      "id": "2a53b256-0dbf-4961-8962-faa9c8ac4731",
+      "id": "fdef8c10-eff7-484a-bd7c-aaff4a09da9f",
       "name": "Switch2"
     },
     {
@@ -4909,10 +4909,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -17104,
-        5328
+        -19136,
+        4992
       ],
-      "id": "a5cf90c6-2b6d-49a5-931a-aebb5153ac16",
+      "id": "51ac08d0-fee0-47aa-8aed-536addd6ee99",
       "name": "Filtrar eventos validos"
     },
     {
@@ -4943,10 +4943,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        -13104,
-        6224
+        -15136,
+        5888
       ],
-      "id": "a2224207-668c-405a-82d0-a288d3af218c",
+      "id": "dfec0148-14b5-46eb-bb7e-3d5411612e92",
       "name": "existe carpeta?1"
     },
     {
@@ -4963,10 +4963,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.4,
       "position": [
-        -12880,
-        6208
+        -14912,
+        5872
       ],
-      "id": "8a78f89d-e458-4922-a9f3-94bf282b0f92",
+      "id": "975c8376-90b5-4b4c-9804-12f61f086e74",
       "name": "DESCARGAR IMG3",
       "credentials": {
         "whatsAppApi": {
@@ -4992,10 +4992,10 @@
       "type": "n8n-nodes-base.googleDrive",
       "typeVersion": 3,
       "position": [
-        -13280,
-        6224
+        -15312,
+        5888
       ],
-      "id": "0580a1bc-f5cb-4370-a21e-8a66de3251d5",
+      "id": "ed59382e-1cb0-433c-b213-681e27dd5bea",
       "name": "Buscamos la carpeta del dia1",
       "alwaysOutputData": true,
       "credentials": {
@@ -5024,10 +5024,10 @@
       "type": "n8n-nodes-base.googleDrive",
       "typeVersion": 3,
       "position": [
-        -12992,
-        6336
+        -15024,
+        6000
       ],
-      "id": "a5c8b58d-5eca-45a4-958d-d2531797badc",
+      "id": "9e25fe62-5f0d-42b6-ad89-2069732cfcb1",
       "name": "Creamos la carpeta del dia1",
       "credentials": {
         "googleDriveOAuth2Api": {
@@ -5056,10 +5056,10 @@
       "type": "n8n-nodes-base.googleDrive",
       "typeVersion": 3,
       "position": [
-        -12704,
-        6208
+        -14736,
+        5872
       ],
-      "id": "6fd30d06-3f53-43aa-92ba-4f58133c6f77",
+      "id": "ce5bee67-a66c-47f6-a24f-435953440baa",
       "name": "Guardamos la imagen1",
       "credentials": {
         "googleDriveOAuth2Api": {
@@ -5075,10 +5075,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -14864,
-        3696
+        -16896,
+        3360
       ],
-      "id": "2c07d076-9770-4a99-850a-2ee6eddf9bd8",
+      "id": "8980c3f6-84c4-482b-8d36-047c90255274",
       "name": "Normalizar Guia2"
     },
     {
@@ -5092,10 +5092,10 @@
       "type": "n8n-nodes-base.whatsApp",
       "typeVersion": 1.1,
       "position": [
-        -13568,
-        3792
+        -15600,
+        3456
       ],
-      "id": "604d3643-4529-466a-9ffa-da8efecdb03a",
+      "id": "74d218b7-112a-467e-8b04-2487558f02fd",
       "name": "GUIA CERRADA",
       "webhookId": "206c6d24-c8c2-4c79-83e4-b102a35051b2",
       "credentials": {
@@ -5138,10 +5138,10 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        -14672,
-        3696
+        -16704,
+        3360
       ],
-      "id": "12dffb1e-2f39-460e-955c-9ac4a072e8bf",
+      "id": "2fedd413-2506-4eee-bda9-7faf19e6b58e",
       "name": "Buscar sesion para cierre",
       "alwaysOutputData": true,
       "credentials": {
@@ -5318,10 +5318,10 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        -14064,
-        3632
+        -16096,
+        3296
       ],
-      "id": "7b4bd7af-bac8-4db9-bd1b-804edfa79a08",
+      "id": "b8dff279-de17-4204-be2b-202a5b6c02c3",
       "name": "Cerrar sesion en caja",
       "alwaysOutputData": true,
       "credentials": {
@@ -5342,10 +5342,10 @@
       "type": "n8n-nodes-base.whatsApp",
       "typeVersion": 1.1,
       "position": [
-        -13376,
-        3792
+        -15408,
+        3456
       ],
-      "id": "3dedfb98-fc4e-45a7-873e-2253d28425ba",
+      "id": "7f5bb487-0216-4264-b1de-75a87195fe4a",
       "name": "AVISO AL TRANSPORTISTA",
       "webhookId": "206c6d24-c8c2-4c79-83e4-b102a35051b2",
       "credentials": {
@@ -5520,10 +5520,10 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        -12848,
-        7728
+        -14880,
+        7392
       ],
-      "id": "001c98d3-c6c6-4cf1-98dc-da093717ff9c",
+      "id": "56d848e7-fc3b-4db4-992e-7dc8175ac39e",
       "name": "Desactivar sesiones en foco anteriores",
       "alwaysOutputData": true,
       "executeOnce": false,
@@ -5569,10 +5569,10 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        -13232,
-        7712
+        -15264,
+        7376
       ],
-      "id": "a51d5c8e-2ff8-43ea-ad93-64ba14dc4c94",
+      "id": "b4e7f1fa-c813-4765-8dce-2bee1027b6fa",
       "name": "Buscar sesiones pendientes del transportista",
       "alwaysOutputData": true,
       "credentials": {
@@ -5610,10 +5610,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        -13072,
-        7712
+        -15104,
+        7376
       ],
-      "id": "10e4ea67-b057-45ae-8099-5c96a4c8ece3",
+      "id": "fd4847ad-7302-442a-968c-ae798d8958a0",
       "name": "¿Tiene sesiones abiertas?",
       "alwaysOutputData": false
     },
@@ -5628,10 +5628,10 @@
       "type": "n8n-nodes-base.whatsApp",
       "typeVersion": 1.1,
       "position": [
-        -12960,
-        7520
+        -14992,
+        7184
       ],
-      "id": "5e4c20f3-83d9-42b6-92bf-3e633a1c7fcb",
+      "id": "93cf005b-ea3a-474b-8311-d97b6acf9e49",
       "name": "WA aviso sesiones pendientes",
       "webhookId": "2e53036e-cd3d-4329-9083-d7772f863fb5",
       "executeOnce": true,
@@ -5673,10 +5673,10 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        -13872,
-        7328
+        -15904,
+        6992
       ],
-      "id": "6c75b561-65b5-4140-9aa3-1bc40b89f1d3",
+      "id": "10b92d75-f53d-46ed-bb49-a09d40fea43c",
       "name": "¿Ya existe sesion para esta guia?",
       "alwaysOutputData": true,
       "credentials": {
@@ -5713,10 +5713,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        -13616,
-        7328
+        -15648,
+        6992
       ],
-      "id": "4ce7ff48-138a-42e1-90a7-4365c0735758",
+      "id": "9a530aea-1513-40f3-bb09-aa76585ebc14",
       "name": "¿Es sesion existente?",
       "alwaysOutputData": false
     },
@@ -5906,10 +5906,10 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        -12992,
-        7200
+        -15024,
+        6864
       ],
-      "id": "e84f94f2-1a1d-429b-afe0-35ddcc0bb70b",
+      "id": "530d795d-7b6c-4973-bd53-c353f028e5ff",
       "name": "Desactivar sesion en foco actual",
       "credentials": {
         "googleSheetsOAuth2Api": {
@@ -5972,10 +5972,10 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        -12816,
-        7200
+        -14848,
+        6864
       ],
-      "id": "237a1b15-df53-4721-8ed7-a6e4d392e801",
+      "id": "e5942a7a-5bb8-428e-b394-d1be6ad5de7d",
       "name": "Activar sesion de la guia elegida",
       "credentials": {
         "googleSheetsOAuth2Api": {
@@ -5995,10 +5995,10 @@
       "type": "n8n-nodes-base.whatsApp",
       "typeVersion": 1.1,
       "position": [
-        -12592,
-        7200
+        -14624,
+        6864
       ],
-      "id": "666f65cb-21e1-40ba-bb8e-8843430f1420",
+      "id": "ac756157-0c38-409d-b6bc-9c8333a53c27",
       "name": "WA confirmacion cambio de sesion",
       "webhookId": "865124f1-b0a7-481e-a4f3-10a059ec1ec6",
       "credentials": {
@@ -6041,10 +6041,10 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        -13968,
-        6784
+        -16000,
+        6448
       ],
-      "id": "2ac2a218-4d4e-4b47-906d-39bfe01ffea9",
+      "id": "6a14f22e-751f-4e1c-bccf-c3d8c420be18",
       "name": "Buscar otras sesiones activas",
       "alwaysOutputData": true,
       "credentials": {
@@ -6061,10 +6061,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -13792,
-        6784
+        -15824,
+        6448
       ],
-      "id": "4e29798a-e5ce-4101-87f7-fbfebd0cac9d",
+      "id": "0b79637d-c58b-4c9e-a994-f9d554761e94",
       "name": "Construir informe con sesiones"
     },
     {
@@ -6100,10 +6100,10 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        -13872,
-        5648
+        -15904,
+        5312
       ],
-      "id": "000a20ed-97e6-44e9-af0f-36a4fac2ac46",
+      "id": "75a0fbae-1ce1-4c8a-a443-1089d74d593a",
       "name": "Buscar siguiente sesion pendiente",
       "alwaysOutputData": true,
       "credentials": {
@@ -6148,10 +6148,10 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        -13872,
-        3632
+        -15904,
+        3296
       ],
-      "id": "d541ad17-192b-47a1-902d-fbe9cb214d53",
+      "id": "edfa23d0-a5f4-4919-8e7b-34df36c09207",
       "name": "Buscar siguiente sesion pendiente (caja)",
       "alwaysOutputData": true,
       "credentials": {
@@ -6189,10 +6189,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        -13664,
-        5648
+        -15696,
+        5312
       ],
-      "id": "b7386597-941e-458c-9a52-e4e1a1301cb5",
+      "id": "342e4672-4c04-4096-968a-b68cc9b54054",
       "name": "IF ¿Hay siguiente sesion?",
       "alwaysOutputData": false,
       "executeOnce": true
@@ -6225,10 +6225,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        -13680,
-        3632
+        -15712,
+        3296
       ],
-      "id": "4f36e14e-6aaa-4dab-84c1-f98d3cf8b7c4",
+      "id": "9713ba76-5312-422c-b78d-57f95153dfdd",
       "name": "IF ¿Hay siguiente sesion? (caja)",
       "alwaysOutputData": false,
       "executeOnce": true
@@ -6287,10 +6287,10 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        -13456,
-        5632
+        -15488,
+        5296
       ],
-      "id": "14273e6b-997e-449c-adc8-b7a021d71a24",
+      "id": "75024e94-4556-4435-9b8c-b79a9324e37e",
       "name": "Activar siguiente sesion",
       "executeOnce": true,
       "credentials": {
@@ -6354,10 +6354,10 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        -13488,
-        3616
+        -15520,
+        3280
       ],
-      "id": "ad8395ef-a433-44bd-a772-72bb948c70ea",
+      "id": "c0ff6bc4-452a-4aef-ab79-e91600244764",
       "name": "Activar siguiente sesion (caja)",
       "alwaysOutputData": true,
       "credentials": {
@@ -6378,10 +6378,10 @@
       "type": "n8n-nodes-base.whatsApp",
       "typeVersion": 1.1,
       "position": [
-        -13280,
-        5632
+        -15312,
+        5296
       ],
-      "id": "96c3d6d5-27c4-4351-96cc-5c6d7b6d1a96",
+      "id": "22588b9f-d29b-4ab2-85c3-b7e823a012d7",
       "name": "WA aviso sesion activada automaticamente",
       "webhookId": "3dab4932-4e03-45b4-b9e5-ae6a4e3306ba",
       "credentials": {
@@ -6402,10 +6402,10 @@
       "type": "n8n-nodes-base.whatsApp",
       "typeVersion": 1.1,
       "position": [
-        -13296,
-        3616
+        -15328,
+        3280
       ],
-      "id": "6ee05086-dd47-4f5d-b686-2fcac0a16b99",
+      "id": "9ad55fd1-955d-48fe-ab9f-3077638de8e5",
       "name": "WA aviso sesion activada automaticamente (caja)",
       "webhookId": "7a7f579e-c441-47e0-868c-f7015489b47f",
       "credentials": {
@@ -6426,10 +6426,10 @@
       "type": "n8n-nodes-base.whatsApp",
       "typeVersion": 1.1,
       "position": [
-        -13136,
-        3616
+        -15168,
+        3280
       ],
-      "id": "47d78cc4-aa5b-4c99-98b0-909d33a9c98e",
+      "id": "cd6e2ff5-3042-4bbd-832c-0c9103921105",
       "name": "GUIA CERRADA1",
       "webhookId": "206c6d24-c8c2-4c79-83e4-b102a35051b2",
       "credentials": {
@@ -6467,10 +6467,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        -14496,
-        3696
+        -16528,
+        3360
       ],
-      "id": "4c3ad703-482f-4e99-9ad5-e136c9a80537",
+      "id": "fa519874-e1a2-45a8-bc64-f4f256625c9a",
       "name": "existe sesion"
     },
     {
@@ -6487,10 +6487,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.4,
       "position": [
-        -15440,
-        4352
+        -17472,
+        4016
       ],
-      "id": "dc396a57-74d1-4cf5-a425-c68184da56ec",
+      "id": "d20a2d6d-0b72-4cb8-9cb5-bd6b197eb333",
       "name": "CERRAR GUIA?",
       "credentials": {
         "whatsAppApi": {
@@ -6510,10 +6510,10 @@
       "type": "n8n-nodes-base.whatsApp",
       "typeVersion": 1.1,
       "position": [
-        -14288,
-        3792
+        -16320,
+        3456
       ],
-      "id": "db5d3440-091e-47f4-8bf2-03de46507dfe",
+      "id": "bf9f118f-e630-4341-bcc3-9a677010e9c0",
       "name": "guia sin sesion",
       "webhookId": "206c6d24-c8c2-4c79-83e4-b102a35051b2",
       "credentials": {
@@ -6701,10 +6701,10 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        -15008,
-        5456
+        -17040,
+        5120
       ],
-      "id": "d1b3d113-2ab7-4ba5-8bf9-0c0fc706bd77",
+      "id": "01e76abf-539c-4701-9065-b30d3f1ffa1e",
       "name": "volvemos a sesion anterior",
       "credentials": {
         "googleSheetsOAuth2Api": {
@@ -6741,10 +6741,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        -15280,
-        5472
+        -17312,
+        5136
       ],
-      "id": "604fc337-a7e5-4fab-8a05-5e737a9c14c5",
+      "id": "bfd92f46-3f09-4b35-9a07-35c478ed20b1",
       "name": "tenia sesiones anteriores?"
     },
     {
@@ -6769,10 +6769,10 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        -14800,
-        5456
+        -16832,
+        5120
       ],
-      "id": "374c92ec-5fe1-4083-a590-4dd7a3417835",
+      "id": "48865cf9-d001-4499-8e90-46ef07954214",
       "name": "ELIINAMOS FALSA SESION1",
       "credentials": {
         "googleSheetsOAuth2Api": {
@@ -6792,10 +6792,10 @@
       "type": "n8n-nodes-base.whatsApp",
       "typeVersion": 1.1,
       "position": [
-        -14608,
-        5456
+        -16640,
+        5120
       ],
-      "id": "c511d074-a7fe-40f0-9797-bbe09a5ae5af",
+      "id": "3285b2b6-3d7a-410b-87ce-88bb0656ce63",
       "name": "Sesión cancelada1",
       "webhookId": "fabac3c6-9657-44d1-9e5f-5eddeb3875e1",
       "credentials": {
@@ -6816,10 +6816,10 @@
       "type": "n8n-nodes-base.whatsApp",
       "typeVersion": 1.1,
       "position": [
-        -16336,
-        5536
+        -18368,
+        5200
       ],
-      "id": "f3b03fe5-e78c-4924-a9ed-526134d1dfbe",
+      "id": "dbcf5279-1dba-45ea-94e7-099a00790548",
       "name": "NO AUTORIZADO",
       "webhookId": "206c6d24-c8c2-4c79-83e4-b102a35051b2",
       "credentials": {
@@ -6856,10 +6856,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        -16240,
-        5312
+        -18272,
+        4976
       ],
-      "id": "c3cb97c0-0107-48d1-9860-18e58b291cb6",
+      "id": "d57d455c-3d75-4e78-a506-2d264f04da9f",
       "name": "Es ADMIN?"
     },
     {
@@ -6869,10 +6869,10 @@
       "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
       "typeVersion": 1.3,
       "position": [
-        -14752,
-        4928
+        -16784,
+        4592
       ],
-      "id": "544b7f1c-b631-467e-b3b4-0338c5c66575",
+      "id": "724eee36-98fc-4217-adb2-1adcf3a23ada",
       "name": "Structured Output Parser"
     },
     {
@@ -6989,10 +6989,10 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        -14096,
-        4784
+        -16128,
+        4448
       ],
-      "id": "168dbd35-0250-44f1-b831-31f10f1f16fd",
+      "id": "5ca6296f-2244-4265-a6a5-fc85f347f14c",
       "name": "Update row in sheet",
       "credentials": {
         "googleSheetsOAuth2Api": {
@@ -7028,10 +7028,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        -14288,
-        3648
+        -16320,
+        3312
       ],
-      "id": "da30ba4b-eb21-4e3a-8645-6505c8caa554",
+      "id": "677efe12-97c6-4f4d-b0ce-9326cf1dde5f",
       "name": "tipo cierre"
     },
     {
@@ -7201,10 +7201,10 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        -14064,
-        3792
+        -16096,
+        3456
       ],
-      "id": "df424bad-9dd8-4d64-8ee5-4020e9d8b374",
+      "id": "617f8405-ead4-4090-89bb-479e02bbeff3",
       "name": "Cerrar POR DEVOLUCION",
       "alwaysOutputData": true,
       "credentials": {
@@ -7221,10 +7221,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -14304,
-        4496
+        -16336,
+        4160
       ],
-      "id": "830b26b1-4a73-4cb5-b6dd-f6c2a397f2a8",
+      "id": "be7822c6-e37d-43ac-80fe-bb64f565c26a",
       "name": "Transformar para reporte1"
     },
     {
@@ -7264,10 +7264,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        -15728,
-        6384
+        -17760,
+        6048
       ],
-      "id": "db5828d8-6c1b-4d0a-9046-a5560cc56357",
+      "id": "b8dcd04b-5dc4-45e5-95e1-550ad699d273",
       "name": "VERIF PENDIENTE",
       "alwaysOutputData": false
     },
@@ -7305,10 +7305,10 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        -15616,
-        6512
+        -17648,
+        6176
       ],
-      "id": "b93d6497-777e-4f7c-8073-f1cd1b03072b",
+      "id": "6ddcf0b4-2675-4783-b6d6-8b74c1b3836a",
       "name": "Buscamos comprob PENDIENTE1",
       "alwaysOutputData": true,
       "retryOnFail": true,
@@ -7356,10 +7356,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        -15456,
-        6512
+        -17488,
+        6176
       ],
-      "id": "3e14038d-4204-45c2-9ca0-4ab1f2d04f61",
+      "id": "f5890ccc-9f3c-4965-b180-fa8f65d78866",
       "name": "VERIF COMP PEND",
       "alwaysOutputData": false
     },
@@ -7397,10 +7397,10 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        -15728,
-        5824
+        -17760,
+        5488
       ],
-      "id": "29a9f288-b025-4ac6-9e10-275005d2c15f",
+      "id": "4fee75b2-ef52-4b4b-8b58-31e3b8457351",
       "name": "Buscamos si PENDIENTE",
       "alwaysOutputData": true,
       "retryOnFail": true,
@@ -7425,10 +7425,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.4,
       "position": [
-        -15536,
-        6336
+        -17568,
+        6000
       ],
-      "id": "e59642c0-6f23-457d-9361-df992c28a202",
+      "id": "9c68fd8c-f18a-4270-bd7f-0936489e58a1",
       "name": "Sesion pendiente",
       "executeOnce": true,
       "credentials": {
@@ -7452,10 +7452,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.4,
       "position": [
-        -11904,
-        6912
+        -13936,
+        6576
       ],
-      "id": "8917ba3a-7cb9-4cec-99b7-6d187429994d",
+      "id": "1ef1def5-a90e-4c5e-af99-cc704b8532cf",
       "name": "WAInt comp",
       "credentials": {
         "whatsAppApi": {
@@ -7478,10 +7478,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.4,
       "position": [
-        -15344,
-        6336
+        -17376,
+        6000
       ],
-      "id": "c9e65e2c-29fd-4944-b0ba-61c5b25f3955",
+      "id": "3aaab21f-8732-4acf-9ca8-2468023fadd2",
       "name": "WAInt comp1",
       "credentials": {
         "whatsAppApi": {
@@ -7529,10 +7529,10 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        -13504,
-        7216
+        -15536,
+        6880
       ],
-      "id": "b5259df9-3ad9-45c2-86ee-8a1d8e44e7fe",
+      "id": "867b7628-8492-4297-8fd0-8d7afc7a92a2",
       "name": "Es su guia?",
       "alwaysOutputData": true,
       "credentials": {
@@ -7569,10 +7569,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        -13360,
-        7216
+        -15392,
+        6880
       ],
-      "id": "c09ac81f-90c4-4110-b37c-51200ad27b45",
+      "id": "34fa0056-8893-4d2d-b540-d669b3252494",
       "name": "si es su guia",
       "alwaysOutputData": false
     },
@@ -7587,10 +7587,10 @@
       "type": "n8n-nodes-base.whatsApp",
       "typeVersion": 1.1,
       "position": [
-        -13248,
-        7376
+        -15280,
+        7040
       ],
-      "id": "71ac0a62-d5b3-4a2a-a73f-534f9afaa21c",
+      "id": "4e9e978f-1dbd-4950-a6cd-28737ed091b5",
       "name": "Send message",
       "webhookId": "99ed4b63-0147-4fb5-acae-db361a3a22cf",
       "credentials": {
@@ -7635,10 +7635,10 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        -13152,
-        7200
+        -15184,
+        6864
       ],
-      "id": "9f333252-4fb2-4ad3-8a49-69ca05d2f018",
+      "id": "d34107db-edfc-42aa-bdc6-f51454208569",
       "name": "guia foco",
       "alwaysOutputData": true,
       "credentials": {
@@ -7834,10 +7834,10 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        -14928,
-        5136
+        -16960,
+        4800
       ],
-      "id": "36c0de1b-53b3-4c8c-b3bf-c2017cfb4503",
+      "id": "49189608-5561-4145-969c-53da7b27360b",
       "name": "Desactivar sesion en foco actual1",
       "credentials": {
         "googleSheetsOAuth2Api": {
@@ -7881,10 +7881,10 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        -15168,
-        5136
+        -17200,
+        4800
       ],
-      "id": "de9a545f-eb54-4305-af55-cf924aae0e9d",
+      "id": "6f152870-3ab1-4e42-8109-24360a5792fb",
       "name": "guia foco1",
       "alwaysOutputData": true,
       "credentials": {
@@ -7922,10 +7922,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        -15280,
-        5280
+        -17312,
+        4944
       ],
-      "id": "54772ef9-6480-4a44-9c22-716dae74881c",
+      "id": "440bc678-e21b-464e-9682-9ec07616491c",
       "name": "tenia sesiones anteriores?1"
     },
     {
@@ -7955,10 +7955,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        -12816,
-        6480
+        -14848,
+        6144
       ],
-      "id": "7d58dd9a-0ad0-4a6c-aa70-08acd9b988e8",
+      "id": "9b0de28c-ba38-4e36-9f62-ef4fe2874071",
       "name": "cont = 2?"
     },
     {
@@ -7968,10 +7968,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -12480,
-        7728
+        -14512,
+        7392
       ],
-      "id": "1d681022-e64b-4b22-86af-54be821652b0",
+      "id": "13429e7c-4da1-4df1-bd63-98248f90d353",
       "name": "mapear numeros"
     },
     {
@@ -8001,10 +8001,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        -16128,
-        5536
+        -18160,
+        5200
       ],
-      "id": "5f2d7e9d-6083-41f1-bba2-8d04ddded3bf",
+      "id": "d0bbe1ff-9c8d-451c-90f4-9548a55d7e54",
       "name": "Es OPERATIVO?"
     },
     {
@@ -8017,10 +8017,10 @@
       "type": "@n8n/n8n-nodes-langchain.chainLlm",
       "typeVersion": 1.9,
       "position": [
-        -14896,
-        4784
+        -16928,
+        4448
       ],
-      "id": "f65f348b-d074-4730-bb10-f15119fec076",
+      "id": "0d030fc8-4a76-4140-88ac-ff6615635018",
       "name": "Basic LLM Chain1"
     },
     {
@@ -8033,10 +8033,10 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -16480,
-        5136
+        -18512,
+        4800
       ],
-      "id": "8ab409dc-95d4-4054-9a4c-b5b94950b4c1",
+      "id": "0840b4f1-e5f5-4c3d-b8a4-d01b01852aa0",
       "name": "Nota Roles"
     },
     {
@@ -8049,10 +8049,10 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -16176,
-        3184
+        -18208,
+        2848
       ],
-      "id": "3c5a125f-7760-46be-ad20-da939cc1784b",
+      "id": "308637e1-bf6f-4762-bd6c-9b1a4c6cc98c",
       "name": "Nota Admin"
     },
     {
@@ -8064,11 +8064,11 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        -15792,
-        5120
+        -17824,
+        4784
       ],
       "typeVersion": 1,
-      "id": "315a554d-3824-4e0e-9a7e-4323ead26cb9",
+      "id": "2ea26e55-25de-41bc-9a92-0232aecc8399",
       "name": "Sticky Note"
     },
     {
@@ -8099,10 +8099,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        -15552,
-        4480
+        -17584,
+        4144
       ],
-      "id": "b5f8d12f-ccad-4344-a243-1507f4b1b708",
+      "id": "e2d4cbd2-9fbc-486c-a967-09bdb1618232",
       "name": "If"
     },
     {
@@ -8116,10 +8116,10 @@
       "type": "n8n-nodes-base.whatsApp",
       "typeVersion": 1.1,
       "position": [
-        -15440,
-        4576
+        -17472,
+        4240
       ],
-      "id": "7da57ba3-06b8-4658-9734-31a6c14d218b",
+      "id": "47ecd083-9a09-4093-9af7-0418741dd1dd",
       "name": "no encontrado",
       "webhookId": "206c6d24-c8c2-4c79-83e4-b102a35051b2",
       "credentials": {
@@ -8136,10 +8136,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -16608,
-        5328
+        -18640,
+        4992
       ],
-      "id": "bbcff6eb-937c-4cac-b5cb-d982bd5d9a23",
+      "id": "64e89e52-1c59-4e8a-a4a6-0f06137f7626",
       "name": "Resolver Sucursal"
     },
     {
@@ -8152,10 +8152,10 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -17312,
-        5136
+        -19344,
+        4800
       ],
-      "id": "663a9c3b-4e80-4b91-828b-705730988499",
+      "id": "a8f595ea-bfa5-49a4-a680-6b9251c49f8c",
       "name": "Nota Entrada"
     },
     {
@@ -8165,10 +8165,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -14512,
-        4784
+        -16544,
+        4448
       ],
-      "id": "fb7083ac-db7b-4f02-9e82-d3ebb3ea1932",
+      "id": "932f1a30-9f43-451c-b967-6541b3de064b",
       "name": "Sanitizar respuesta admin"
     },
     {
@@ -8199,10 +8199,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2,
       "position": [
-        -15248,
-        3376
+        -17280,
+        3040
       ],
-      "id": "a7ca0493-1dde-43b4-9f0d-70054b5fa189",
+      "id": "d7e8cfc2-c160-426a-9fe3-8158482eb8f0",
       "name": "¿Multisuc? COMP"
     },
     {
@@ -8219,10 +8219,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -14864,
-        3248
+        -16896,
+        2912
       ],
-      "id": "7a148897-0bdc-4c8b-993a-2d5f2df22f7c",
+      "id": "e6c4f29f-4c15-4f3b-bd40-216b6cb15fd3",
       "name": "Menú sucursal COMP",
       "credentials": {
         "whatsAppApi": {
@@ -8259,10 +8259,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2,
       "position": [
-        -15248,
-        3680
+        -17280,
+        3344
       ],
-      "id": "7ec15657-fa84-4cf3-8cf8-c745ed4f510b",
+      "id": "21a37d1b-a6a8-4314-8f4e-e82d931a163a",
       "name": "¿Multisuc? SES"
     },
     {
@@ -8279,10 +8279,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -14864,
-        3552
+        -16896,
+        3216
       ],
-      "id": "9440fcac-8651-437c-ad29-7e3e0de81d97",
+      "id": "e468aa80-c6c7-49fa-96c2-45c0bdb49452",
       "name": "Menú sucursal SES",
       "credentials": {
         "whatsAppApi": {
@@ -8319,10 +8319,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2,
       "position": [
-        -15248,
-        3520
+        -17280,
+        3184
       ],
-      "id": "834b9e33-c4de-4f4e-bd06-b40f600c864f",
+      "id": "28618a34-765a-4131-a4b6-ff85c5692fc7",
       "name": "¿Multisuc? INF"
     },
     {
@@ -8339,10 +8339,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -14864,
-        3408
+        -16896,
+        3072
       ],
-      "id": "60d29671-08d5-4530-8adf-e84a439fffaf",
+      "id": "1a037a35-467b-4ed1-a949-8077dede0370",
       "name": "Menú sucursal INF",
       "credentials": {
         "whatsAppApi": {
@@ -8358,10 +8358,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -14864,
-        3824
+        -16896,
+        3488
       ],
-      "id": "7f17e549-3ce3-4a4f-8455-00e2ae1283a4",
+      "id": "dfbd13cb-cdbf-4a29-932b-27706e09f100",
       "name": "Sufijo reporte COMP"
     },
     {
@@ -8371,10 +8371,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -14864,
-        3952
+        -16896,
+        3616
       ],
-      "id": "85f0a254-e289-4100-a047-8f6c9d13807b",
+      "id": "ba37caf6-630c-411e-a6fe-8f1c57017688",
       "name": "Sufijo reporte SES"
     },
     {
@@ -8384,10 +8384,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -14864,
-        4080
+        -16896,
+        3744
       ],
-      "id": "5843d9e1-dc90-4b2b-96a3-c265d76733de",
+      "id": "6e5f8900-a048-47ae-b869-855231157b7c",
       "name": "Sufijo reporte INF"
     },
     {
@@ -8418,10 +8418,10 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        -14864,
-        4352
+        -16896,
+        4016
       ],
-      "id": "3d954061-6928-41c6-99df-fcd4b52248ed",
+      "id": "63eb98f3-2254-47a2-8ac0-20db440dd8c0",
       "name": "Leer comprobantes (reporte)",
       "alwaysOutputData": true,
       "credentials": {
@@ -8454,10 +8454,10 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        -14864,
-        4496
+        -16896,
+        4160
       ],
-      "id": "28b8fd2c-f041-4cec-827d-076eee8773a1",
+      "id": "c53073c1-0ddd-4f0a-ac0b-7737a809c78a",
       "name": "Leer sesiones (reporte)",
       "alwaysOutputData": true,
       "credentials": {
@@ -8490,10 +8490,10 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        -14672,
-        4080
+        -16704,
+        3744
       ],
-      "id": "af38afcb-d2d4-47d8-966d-09c9079010a4",
+      "id": "07f13bbd-b0ef-465e-b38d-e1e426bc5f06",
       "name": "Leer sesiones (informe)",
       "alwaysOutputData": true,
       "credentials": {
@@ -8523,10 +8523,10 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        -14304,
-        4080
+        -16336,
+        3744
       ],
-      "id": "6fe7a2e4-d78b-4b3f-966a-8a09b64d61c8",
+      "id": "91b1c716-9a10-485b-947d-2de91c7f2fa5",
       "name": "Leer Liquidaciones (informe)",
       "alwaysOutputData": true,
       "retryOnFail": true,
@@ -8544,10 +8544,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -14672,
-        4352
+        -16704,
+        4016
       ],
-      "id": "d22ae4ae-456f-4590-87a2-eb67fdbe029c",
+      "id": "aff96bf6-5181-4275-9784-272a6d0f7212",
       "name": "Filtrar fecha COMP"
     },
     {
@@ -8557,10 +8557,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -14672,
-        4496
+        -16704,
+        4160
       ],
-      "id": "6330382a-51cb-48cc-89f2-f6bfae09138e",
+      "id": "7731f3ed-4206-458e-b690-ef096283aef6",
       "name": "Filtrar fecha SES",
       "alwaysOutputData": true
     },
@@ -8571,10 +8571,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -14496,
-        4080
+        -16528,
+        3744
       ],
-      "id": "a829d548-c821-4b39-bbfc-026e43dfd8bb",
+      "id": "b3c293f6-2b52-4921-8457-f7655ec10a21",
       "name": "Filtrar fecha INF"
     },
     {
@@ -8591,10 +8591,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -14672,
-        3824
+        -16704,
+        3488
       ],
-      "id": "1b721b96-023c-4f3d-aa69-8f46f6ab6e0c",
+      "id": "7667e804-b20e-4489-9848-5a607e91994f",
       "name": "Menú rango COMP",
       "credentials": {
         "whatsAppApi": {
@@ -8617,10 +8617,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -14672,
-        3952
+        -16704,
+        3616
       ],
-      "id": "cc716ead-c7d5-408e-8f00-564dfb251398",
+      "id": "5ed4f1f9-f581-41d3-97ba-c62f223609f4",
       "name": "Menú rango SES",
       "credentials": {
         "whatsAppApi": {
@@ -8657,10 +8657,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2,
       "position": [
-        -15248,
-        4112
+        -17280,
+        3776
       ],
-      "id": "448c221b-1da8-4bb1-8599-5bbd8aa80f24",
+      "id": "6f66d794-d96d-44b4-9b3b-7af803593b4e",
       "name": "¿Es RANGO? COMP"
     },
     {
@@ -8691,10 +8691,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2,
       "position": [
-        -15248,
-        4224
+        -17280,
+        3888
       ],
-      "id": "a3f80963-f4de-4767-b2e5-ca99b5c331c9",
+      "id": "b121d5dd-dfd0-4526-aca0-6612797c4b84",
       "name": "¿Es RANGO? SES"
     },
     {
@@ -8704,10 +8704,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -14864,
-        4192
+        -16896,
+        3856
       ],
-      "id": "cfcc4e94-f715-489c-a1d7-8c81e2670edf",
+      "id": "c36163b6-7faf-493e-b307-eca5dc56a83c",
       "name": "Guardar sel. reporte"
     },
     {
@@ -8724,10 +8724,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -14496,
-        4192
+        -16528,
+        3856
       ],
-      "id": "245cdc9c-1209-46e2-9868-bd0dc1f7641e",
+      "id": "89f5669e-b1d0-45ff-9031-cd7d6ab20f3f",
       "name": "Pedir fechas rango",
       "credentials": {
         "whatsAppApi": {
@@ -8765,10 +8765,10 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.5,
       "position": [
-        -14672,
-        4192
+        -16704,
+        3856
       ],
-      "id": "ecdf92c3-1769-4efc-8230-8957847aebcc",
+      "id": "b5e2bf72-2c22-4e45-a28e-1e95c1c9901d",
       "name": "Guardar rep_pendiente",
       "credentials": {
         "googleSheetsOAuth2Api": {
@@ -8815,10 +8815,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2,
       "position": [
-        -15872,
-        4768
+        -17904,
+        4432
       ],
-      "id": "bf686a7c-fe01-4ac7-99bb-2b436010bd7d",
+      "id": "8b03a841-b86d-486f-860c-add5a6fc2556",
       "name": "¿Respuesta de fechas?"
     },
     {
@@ -8828,10 +8828,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -15728,
-        4640
+        -17760,
+        4304
       ],
-      "id": "bcced4f7-fdac-4e46-8001-22b149def67d",
+      "id": "ca52d88e-9726-403e-98de-84ea1d8b5c18",
       "name": "Router reporte por fechas"
     },
     {
@@ -8889,10 +8889,10 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3,
       "position": [
-        -15440,
-        4704
+        -17472,
+        4368
       ],
-      "id": "49213763-d55d-403a-9604-c22502aee910",
+      "id": "845cce75-2777-4612-b337-85e121635cb2",
       "name": "Switch tipo (fechas)"
     },
     {
@@ -8924,10 +8924,10 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.5,
       "position": [
-        -14864,
-        4640
+        -16896,
+        4304
       ],
-      "id": "a3f4e878-9077-4eb8-adae-24ce660eac4e",
+      "id": "1c3bff94-3a4c-44fe-8801-738a645017c2",
       "name": "Limpiar rep_pendiente",
       "credentials": {
         "googleSheetsOAuth2Api": {
@@ -8935,6 +8935,48 @@
           "name": "Google Sheets account"
         }
       }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "={{ $vars.SHEET_ID_CONTROL }}",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "prompt_comprobante",
+          "mode": "name"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -16400,
+        6160
+      ],
+      "id": "629549cd-864e-4e53-93c3-9c3324d0eb82",
+      "name": "Leer reglas prompt",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "FaAiIXMHXGGQkpkt",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// ============================================================\n// ENSAMBLAR PROMPT — Opción 3 (híbrido)\n//   ZONA A (fija) + reglas activas del Sheet agrupadas por campo + ZONA C (fija)\n// Reenvía imageBase64 / imageMimeType desde \"CONVERTIR A BASE64\"\n// para no perder la imagen al haber leído el Sheet en medio.\n// ============================================================\n\nconst ZONA_A = `Eres un extractor de datos de comprobantes de pago bolivianos. Analiza esta imagen y extrae TODOS los datos disponibles en formato JSON sin explicaciones ni texto adicional.\n\nPara cada campo devuelve un objeto con \"valor\" y \"confianza\".\n\n━━━ REGLAS ESTRICTAS DE CONFIANZA ━━━\n- 1.0 → perfectamente claro, nítido, sin ambigüedad visual.\n- 0.8 → legible pero con ligera duda (borroso, pequeño o parcialmente visible).\n- 0.5 → parcialmente legible o inferido.\n- 0.2 → muy dudoso, incompleto o apenas visible.\n- 0.0 → no se puede leer → valor: null.\n- Si el valor fue inferido → confianza <= 0.5.\n- Si hay desenfoque o corte → confianza <= 0.8.\n- PROHIBIDO usar 1.0 si la imagen no es perfectamente clara.\n\nAUTOVERIFICACIÓN:\nAntes de asignar confianza, evalúa si el texto es claramente visible o lo estás deduciendo.\n\n━━━ REGLAS DE EXTRACCIÓN POR CAMPO ━━━`;\n\nconst ZONA_C = `Devuelve SOLO el JSON con esta estructura:\n\n{\n  \"monto\": {\"valor\": (número decimal), \"confianza\": (0.0-1.0)},\n  \"tipo_pago\": {\"valor\": (string), \"confianza\": (0.0-1.0)},\n  \"referencia\": {\"valor\": (código alfanumérico o null), \"confianza\": (0.0-1.0)},\n  \"fecha\": {\"valor\": (\"YYYY-MM-DD\" o null), \"confianza\": (0.0-1.0)},\n  \"hora\": {\"valor\": (\"HH:MM:SS\" o null), \"confianza\": (0.0-1.0)},\n  \"banco_billetera\": {\"valor\": (nombre normalizado del banco/billetera DESTINO o null), \"confianza\": (0.0-1.0)},\n  \"banco_origen\": {\"valor\": (nombre del banco/billetera ORIGEN o null), \"confianza\": (0.0-1.0)},\n  \"cuenta_destino\": {\"valor\": (cadena con caracteres visibles o null), \"confianza\": (0.0-1.0)},\n  \"cuenta_origen\": {\"valor\": (cadena con caracteres visibles o null), \"confianza\": (0.0-1.0)},\n  \"nombre_depositante\": {\"valor\": (nombre del pagador o null), \"confianza\": (0.0-1.0)},\n  \"nombre_beneficiario\": {\"valor\": (nombre del receptor o null), \"confianza\": (0.0-1.0)},\n  \"agencia\": {\"valor\": (agencia o sucursal o null), \"confianza\": (0.0-1.0)},\n  \"legible\": (true si monto.confianza >= 0.7 Y referencia.confianza >= 0.7, false en caso contrario)\n}`;\n\n// Orden fijo de los campos en el prompt\nconst ORDEN_CAMPOS = [\n  \"GENERAL\",\"BANCO_BILLETERA\",\"BANCO_ORIGEN\",\"CUENTA_DESTINO\",\"CUENTA_ORIGEN\",\n  \"REFERENCIA\",\"NOMBRE_BENEFICIARIO\",\"NOMBRE_DEPOSITANTE\",\"TIPO_PAGO\",\n  \"MONTO\",\"FECHA\",\"HORA\",\"AGENCIA\"\n];\n\n// Etiqueta legible por campo (para el encabezado del bloque)\nconst ETIQUETA = {\n  GENERAL:\"GENERAL\", BANCO_BILLETERA:\"BANCO_BILLETERA\", BANCO_ORIGEN:\"BANCO_ORIGEN\",\n  CUENTA_DESTINO:\"CUENTA_DESTINO\", CUENTA_ORIGEN:\"CUENTA_ORIGEN\", REFERENCIA:\"REFERENCIA\",\n  NOMBRE_BENEFICIARIO:\"NOMBRE_BENEFICIARIO\", NOMBRE_DEPOSITANTE:\"NOMBRE_DEPOSITANTE\",\n  TIPO_PAGO:\"TIPO_PAGO\", MONTO:\"MONTO\", FECHA:\"FECHA\", HORA:\"HORA\", AGENCIA:\"AGENCIA\"\n};\n\n// 1. Tomar todas las filas del Sheet (este nodo recibe las filas de \"Leer reglas prompt\")\nconst filas = $input.all().map(i => i.json);\n\n// 2. Filtrar solo activas con texto de regla\nconst reglas = filas.filter(r =>\n  r && String(r.activo).trim().toUpperCase() === \"TRUE\" &&\n  r.regla && String(r.regla).trim() !== \"\"\n);\n\n// 3. Agrupar por campo\nconst porCampo = {};\nfor (const r of reglas) {\n  const campo = String(r.campo || \"GENERAL\").trim().toUpperCase();\n  (porCampo[campo] = porCampo[campo] || []).push(r);\n}\n// 4. Ordenar cada grupo por 'orden'\nfor (const k in porCampo) {\n  porCampo[k].sort((a,b) => Number(a.orden || 0) - Number(b.orden || 0));\n}\n\n// 5. Construir ZONA B respetando ORDEN_CAMPOS; campos no listados van al final\nconst camposPresentes = Object.keys(porCampo);\nconst extras = camposPresentes.filter(c => !ORDEN_CAMPOS.includes(c));\nconst secuencia = [...ORDEN_CAMPOS, ...extras];\n\nlet zonaB = \"\";\nfor (const campo of secuencia) {\n  if (!porCampo[campo] || !porCampo[campo].length) continue;\n  zonaB += \"\\n\\n[\" + (ETIQUETA[campo] || campo) + \"]\\n\";\n  zonaB += porCampo[campo].map(r => \"- \" + String(r.regla).trim()).join(\"\\n\");\n}\n\n// 6. Recuperar imagen desde CONVERTIR A BASE64 (no se pierde aunque leímos el Sheet)\nlet conv;\ntry {\n  conv = $('CONVERTIR A BASE64').item.json;\n} catch (e) {\n  conv = {};\n}\n\n// 7. Fallback defensivo: si no hay reglas activas, NO mandar a Groq sin instrucciones\nif (!zonaB.trim()) {\n  return [{\n    json: {\n      ...conv,\n      error: true,\n      legible: false,\n      motivo_error: \"No hay reglas de prompt activas en la hoja prompt_comprobante\"\n    }\n  }];\n}\n\nconst promptComprobante = ZONA_A + zonaB + \"\\n\\n\" + ZONA_C;\n\nreturn [{\n  json: {\n    ...conv,                       // arrastra imageBase64, imageMimeType, phone, guia, transportista, etc.\n    promptComprobante: promptComprobante,\n    reglas_activas: reglas.length\n  }\n}];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -16256,
+        6160
+      ],
+      "id": "b1e2aefc-96d0-47df-9e86-750243659583",
+      "name": "Ensamblar prompt"
     }
   ],
   "pinData": {},
@@ -9114,7 +9156,7 @@
       "main": [
         [
           {
-            "node": "ANALIZAR CON GROQ",
+            "node": "Leer reglas prompt",
             "type": "main",
             "index": 0
           }
@@ -11083,6 +11125,28 @@
           }
         ]
       ]
+    },
+    "Leer reglas prompt": {
+      "main": [
+        [
+          {
+            "node": "Ensamblar prompt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ensamblar prompt": {
+      "main": [
+        [
+          {
+            "node": "ANALIZAR CON GROQ",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "active": true,
@@ -11094,7 +11158,7 @@
     "callerPolicy": "workflowsFromSameOwner",
     "availableInMCP": false
   },
-  "versionId": "98bcd9ec-2cfc-45e8-9f49-ade49e016ffd",
+  "versionId": "4a9566fd-78f7-4f24-9a9c-1ac03412fd2d",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "ce939f814c698f4ea5ecf51dc015e8f0e2a5fc40b0e24608c77a51955fdb69ee"
