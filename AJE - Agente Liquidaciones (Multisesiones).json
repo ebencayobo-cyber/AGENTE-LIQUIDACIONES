@@ -1262,7 +1262,7 @@
     },
     {
       "parameters": {
-        "jsCode": "const data = $input.item.json;\nlet errores = [];\nlet warnings = [];\nlet fechaFutura = false;\n\n// ─── CONFIGURACIÓN (desde $vars, con fallback a valores por defecto) ───\n// Editar en n8n: Settings → Variables\n//   NOMBRES_AJE  = lista separada por comas (ej: AJE,INDUSTRIAS AJE,AJE BOLIVIA)\n//   CUENTAS_AJE  = lista separada por comas (ej: 7015046986392,1041309287,1311415157)\nconst _toList = (val) => (val ? String(val).split(',').map(s => s.trim()).filter(Boolean) : []);\n\nconst NOMBRES_AJE = _toList($vars.NOMBRES_AJE).length\n  ? _toList($vars.NOMBRES_AJE)\n  : ['AJE', 'INDUSTRIAS AJE', 'INDUSTRIAS AJE BOLIVIA', 'AJE BOLIVIA', 'AJE GROUP', 'AJEBOLIVIA', 'INDUSTRIAS AJEBOLIVIA'];\n\nconst CUENTAS_AJE = _toList($vars.CUENTAS_AJE).length\n  ? _toList($vars.CUENTAS_AJE)\n  : ['7015046986392', '1041309287', '1311415157'];\n\n// ─── HELPERS ─────────────────────────────────────────────────\nfunction normalizarTexto(texto) {\n  if (!texto) return '';\n\n  return texto.toString()\n    .normalize('NFD')\n    .replace(/[\\u0300-\\u036f]/g, '')      // quitar tildes\n    .toUpperCase()\n    .replace(/\\bS\\.?A\\.?\\b/g, '')         // quitar SA / S.A.\n    .replace(/\\bS\\.?R\\.?L\\.?\\b/g, '')     // quitar SRL\n    .replace(/[^A-Z0-9]/g, '')            // quitar espacios y símbolos\n    .trim();\n}\n\nfunction normalizarCuenta(cuenta) {\n  if (!cuenta) return '';\n  return cuenta.toString().replace(/[\\*xX\\s\\-]/g, '');\n}\n\nfunction cuentaCoincide(cuentaDetectada, cuentasValidas) {\n  const detectada = normalizarCuenta(cuentaDetectada);\n  if (!detectada || detectada.length < 4) return false;\n\n  // Limpiar prefijos de texto comunes antes de validar\n  const soloDigitos = detectada.replace(/[^0-9xX\\*]/gi, '');\n\n  return cuentasValidas.some(valida => {\n    const digitosValidos = normalizarCuenta(valida).replace(/[^0-9]/g, '');\n    const partes = soloDigitos.split(/[^0-9]+/).filter(p => p.length > 0);\n    return partes.every(parte => digitosValidos.includes(parte));\n  });\n}\n\nfunction esBeneficiarioAJE(nombre) {\n  const n = normalizarTexto(nombre);\n  return NOMBRES_AJE.some(aje => n.includes(normalizarTexto(aje)));\n}\n\n// ─── MONTO ───────────────────────────────────────────────────\nif (!data.monto || data.monto <= 0 || data.monto > 100000) {\n  errores.push(\"Monto inválido\");\n}\n\n// ─── FECHA ───────────────────────────────────────────────────\nif (!data.fecha || !/^\\d{4}-\\d{2}-\\d{2}$/.test(data.fecha)) {\n  errores.push(\"Formato de fecha inválido\");\n} else {\n  const fecha = new Date(data.fecha);\n  const hoy = new Date();\n\n  const inicioMesActual = new Date(hoy.getFullYear(), hoy.getMonth(), 1);\n  if (fecha < inicioMesActual) {\n    errores.push(\"Comprobante del mes pasado o anterior: \" + data.fecha);\n    fechaFutura = false;\n  }\n\n  if (fecha > hoy) {\n    errores.push(\"Fecha en el futuro: \" + data.fecha);\n    fechaFutura = true;\n  }\n\n  const hace1anio = new Date();\n  hace1anio.setFullYear(hace1anio.getFullYear() - 1);\n  if (fecha < hace1anio) {\n    warnings.push(\"Fecha muy antigua\");\n  }\n}\n\n// ─── REFERENCIA ──────────────────────────────────────────────\n// Aseguramos que la referencia sea numérica y no un nombre\nif (!data.referencia) {\n  errores.push(\"Referencia inválida\");\n} else {\n  const refStr = data.referencia.toString().trim();\n  const soloLetras = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s\\.]+$/.test(refStr);\n  if (soloLetras) {\n    errores.push(\"Referencia inválida: parece un nombre, no un código numérico\");\n  } else if (refStr.replace(/[^0-9]/g, '').length < 4) {\n    errores.push(\"Referencia inválida: muy pocos dígitos\");\n  }\n}\n\n// ─── CONFIANZA ───────────────────────────────────────────────\nconst confEstricta = 1;\nconst confMin = 0.8;\n\nif (data.monto_confianza < confEstricta) {\n  errores.push(\"Algunos datos no se leen bien\");\n}\nif (data.referencia_confianza < confMin) {\n  errores.push(\"Referencia poco confiable\");\n}\nif (data.fecha_confianza < confMin) {\n  warnings.push(\"Fecha poco confiable\");\n}\n\n// ─── CAMPOS CLAVE ────────────────────────────────────────────\nif (!data.monto || !data.referencia || !data.fecha) {\n  errores.push(\"Faltan campos obligatorios\");\n}\n\n// ─── HORA ────────────────────────────────────────────────────\nif (!data.hora || !/^\\d{2}:\\d{2}(:\\d{2})?$/.test(data.hora)) {\n  errores.push(\"Formato de hora inválido\");\n} else {\n  const partes = data.hora.split(\":\").map(Number);\n  const hh = partes[0];\n  const mm = partes[1];\n  const ss = partes[2] || 0;\n\n  if (hh > 23 || mm > 59 || ss > 59) {\n    errores.push(\"Hora inválida\");\n  }\n\n  if (!fechaFutura && data.fecha) {\n    const horaCompleta = `${hh.toString().padStart(2, '0')}:${mm.toString().padStart(2, '0')}:${ss.toString().padStart(2, '0')}`;\n    const fechaHora = new Date(`${data.fecha}T${horaCompleta}`);\n    const ahora = new Date();\n    if (fechaHora > ahora) {\n      errores.push(\"Fecha y hora en el futuro\");\n    }\n  }\n}\n\n// ─── BENEFICIARIO AJE (OBLIGATORIO) ──────────────────────────\nconst beneficiario = data.nombre_beneficiario;\n\nif (!beneficiario) {\n  errores.push(\"No se detectó destinatario del pago\");\n} else if (!esBeneficiarioAJE(beneficiario)) {\n  errores.push(\"El destinatario no corresponde a Industrias AJE: \" + beneficiario);\n}\n\n// ─── BANCO_BILLETERA: no debe ser un nombre AJE ──────────────\n// Fix: el modelo a veces pone el beneficiario como banco\nif (data.banco_billetera && esBeneficiarioAJE(data.banco_billetera)) {\n  warnings.push(\"banco_billetera detectado como nombre AJE (posible error de extracción)\");\n  // No bloqueamos, solo advertimos; la cuenta destino ya valida\n}\n\n// ─── VALIDACIÓN CUENTA DESTINO ───────────────────────────────\nconst cuentaDestino = data.cuenta_destino;\n\nif (!cuentaDestino) {\n  warnings.push(\"No se detectó número de cuenta destino\");\n} else if (!cuentaCoincide(cuentaDestino, CUENTAS_AJE)) {\n  warnings.push(\"Número de cuenta destino no corresponde a AJE: \" + cuentaDestino);\n}\n\n// ─── SCORE GLOBAL ────────────────────────────────────────────\nconst score = (\n  data.monto_confianza +\n  data.referencia_confianza +\n  data.fecha_confianza\n) / 3;\n\n// ─── DECISIÓN FINAL ──────────────────────────────────────────\nlet estado = \"aprobado\";\nif (errores.length > 0) {\n  estado = \"rechazado\";\n} else if (warnings.length > 0 || score < 0.75) {\n  estado = \"revision\";\n}\n\nreturn [{\n  json: {\n    ...data,\n    score_global: score,\n    estado,\n    errores,\n    warnings\n  }\n}];"
+        "jsCode": "const data = $input.item.json;\nlet errores = [];\nlet warnings = [];\nlet fechaFutura = false;\n\n// ─── CONFIGURACIÓN (desde $vars, con fallback a valores por defecto) ───\n// Editar en n8n: Settings → Variables\n//   NOMBRES_AJE  = lista separada por comas (ej: AJE,INDUSTRIAS AJE,AJE BOLIVIA)\n//   CUENTAS_AJE  = lista separada por comas (ej: 7015046986392,1041309287,1311415157)\nconst _toList = (val) => (val ? String(val).split(',').map(s => s.trim()).filter(Boolean) : []);\n\nconst NOMBRES_AJE = _toList($vars.NOMBRES_AJE).length\n  ? _toList($vars.NOMBRES_AJE)\n  : ['AJE', 'INDUSTRIAS AJE', 'INDUSTRIAS AJE BOLIVIA', 'AJE BOLIVIA', 'AJE GROUP', 'AJEBOLIVIA', 'INDUSTRIAS AJEBOLIVIA'];\n\nconst CUENTAS_AJE = _toList($vars.CUENTAS_AJE).length\n  ? _toList($vars.CUENTAS_AJE)\n  : ['7015046986392', '1041309287', '1311415157'];\n\n// ─── HELPERS ─────────────────────────────────────────────────\nfunction normalizarTexto(texto) {\n  if (!texto) return '';\n\n  return texto.toString()\n    .normalize('NFD')\n    .replace(/[\\u0300-\\u036f]/g, '')      // quitar tildes\n    .toUpperCase()\n    .replace(/\\bS\\.?A\\.?\\b/g, '')         // quitar SA / S.A.\n    .replace(/\\bS\\.?R\\.?L\\.?\\b/g, '')     // quitar SRL\n    .replace(/[^A-Z0-9]/g, '')            // quitar espacios y símbolos\n    .trim();\n}\n\nfunction normalizarCuenta(cuenta) {\n  if (!cuenta) return '';\n  return cuenta.toString().replace(/[\\*xX\\s\\-]/g, '');\n}\n\nfunction cuentaCoincide(cuentaDetectada, cuentasValidas) {\n  const detectada = normalizarCuenta(cuentaDetectada);\n  if (!detectada || detectada.length < 4) return false;\n\n  // Limpiar prefijos de texto comunes antes de validar\n  const soloDigitos = detectada.replace(/[^0-9xX\\*]/gi, '');\n\n  return cuentasValidas.some(valida => {\n    const digitosValidos = normalizarCuenta(valida).replace(/[^0-9]/g, '');\n    const partes = soloDigitos.split(/[^0-9]+/).filter(p => p.length > 0);\n    return partes.every(parte => digitosValidos.includes(parte));\n  });\n}\n\nfunction esBeneficiarioAJE(nombre) {\n  const n = normalizarTexto(nombre);\n  return NOMBRES_AJE.some(aje => n.includes(normalizarTexto(aje)));\n}\n\n// ─── MONTO ───────────────────────────────────────────────────\nif (!data.monto || data.monto <= 0 || data.monto > 100000) {\n  errores.push(\"Monto inválido\");\n}\n\n// ─── FECHA ───────────────────────────────────────────────────\nif (!data.fecha || !/^\\d{4}-\\d{2}-\\d{2}$/.test(data.fecha)) {\n  errores.push(\"Formato de fecha inválido\");\n} else {\n  const fecha = new Date(data.fecha);\n  const hoy = new Date();\n\n  const inicioMesActual = new Date(hoy.getFullYear(), hoy.getMonth(), 1);\n  if (fecha < inicioMesActual) {\n    errores.push(\"Comprobante del mes pasado o anterior: \" + data.fecha);\n    fechaFutura = false;\n  }\n\n  if (fecha > hoy) {\n    errores.push(\"Fecha en el futuro: \" + data.fecha);\n    fechaFutura = true;\n  }\n\n  const hace1anio = new Date();\n  hace1anio.setFullYear(hace1anio.getFullYear() - 1);\n  if (fecha < hace1anio) {\n    warnings.push(\"Fecha muy antigua\");\n  }\n}\n\n// ─── REFERENCIA ──────────────────────────────────────────────\n// Aseguramos que la referencia sea numérica y no un nombre\nif (!data.referencia) {\n  errores.push(\"Referencia inválida\");\n} else {\n  const refStr = data.referencia.toString().trim();\n  const soloLetras = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s\\.]+$/.test(refStr);\n  if (soloLetras) {\n    errores.push(\"Referencia inválida: parece un nombre, no un código numérico\");\n  } else if (refStr.replace(/[^0-9]/g, '').length < 4) {\n    errores.push(\"Referencia inválida: muy pocos dígitos\");\n  }\n}\n\n// ─── CONFIANZA ───────────────────────────────────────────────\nconst confEstricta = 1;\nconst confMin = 0.8;\n\nif (data.monto_confianza < confEstricta) {\n  errores.push(\"Algunos datos no se leen bien\");\n}\nif (data.referencia_confianza < confMin) {\n  errores.push(\"Referencia poco confiable\");\n}\nif (data.fecha_confianza < confMin) {\n  warnings.push(\"Fecha poco confiable\");\n}\n\n// ─── CAMPOS CLAVE ────────────────────────────────────────────\nif (!data.monto || !data.referencia || !data.fecha) {\n  errores.push(\"Faltan campos obligatorios\");\n}\n\n// ─── HORA ────────────────────────────────────────────────────\nif (!data.hora || !/^\\d{2}:\\d{2}(:\\d{2})?$/.test(data.hora)) {\n  errores.push(\"Formato de hora inválido\");\n} else {\n  const partes = data.hora.split(\":\").map(Number);\n  const hh = partes[0];\n  const mm = partes[1];\n  const ss = partes[2] || 0;\n\n  if (hh > 23 || mm > 59 || ss > 59) {\n    errores.push(\"Hora inválida\");\n  }\n\n  if (!fechaFutura && data.fecha) {\n    const horaCompleta = `${hh.toString().padStart(2, '0')}:${mm.toString().padStart(2, '0')}:${ss.toString().padStart(2, '0')}`;\n    const fechaHora = new Date(`${data.fecha}T${horaCompleta}`);\n    const ahora = new Date();\n    if (fechaHora > ahora) {\n      errores.push(\"Fecha y hora en el futuro\");\n    }\n  }\n}\n\n// ─── BENEFICIARIO AJE (OBLIGATORIO) ──────────────────────────\nconst beneficiario = data.nombre_beneficiario;\n\nif (!beneficiario) {\n  errores.push(\"No se detectó destinatario del pago\");\n} else if (!esBeneficiarioAJE(beneficiario)) {\n  errores.push(\"El destinatario no corresponde a Industrias AJE: \" + beneficiario);\n}\n\n// ─── BANCO_BILLETERA: no debe ser un nombre AJE ──────────────\n// Fix: el modelo a veces pone el beneficiario como banco\nif (data.banco_billetera && esBeneficiarioAJE(data.banco_billetera)) {\n  warnings.push(\"banco_billetera detectado como nombre AJE (posible error de extracción)\");\n  // No bloqueamos, solo advertimos; la cuenta destino ya valida\n}\n\n// ─── VALIDACIÓN CUENTA DESTINO ───────────────────────────────\nconst cuentaDestino = data.cuenta_destino;\n\nif (!cuentaDestino) {\n  warnings.push(\"No se detectó número de cuenta destino\");\n} else if (!cuentaCoincide(cuentaDestino, CUENTAS_AJE)) {\n  warnings.push(\"Número de cuenta destino no corresponde a AJE: \" + cuentaDestino);\n}\n\n// ─── SCORE GLOBAL ────────────────────────────────────────────\nconst score = (\n  data.monto_confianza +\n  data.referencia_confianza +\n  data.fecha_confianza\n) / 3;\n\n// ─── DECISIÓN FINAL ──────────────────────────────────────────\nlet estado = \"aprobado\";\nif (errores.length > 0) {\n  estado = \"rechazado\";\n} else if (warnings.length > 0 || score < 0.75) {\n  estado = \"revision\";\n}\n\n// ─── CATEGORIZACIÓN DE RECHAZO (aditivo) ─────────────────────\n// Distingue rechazo por REGLA de negocio (reintentar foto no ayuda)\n// de rechazo por CALIDAD/lectura (una nueva foto sí puede resolver).\nconst erroresDeRegla = [\n  \"El destinatario no corresponde\",\n  \"Comprobante del mes pasado\",\n  \"Fecha en el futuro\",\n  \"Fecha y hora en el futuro\",\n  \"Referencia inválida: parece un nombre\",\n  \"No se detectó destinatario del pago\"\n];\nconst esRegla = errores.some(e => erroresDeRegla.some(r => e.includes(r)));\nconst categoria_rechazo = errores.length === 0\n  ? null\n  : (esRegla ? \"regla\" : \"calidad\");\n\nreturn [{\n  json: {\n    ...data,\n    score_global: score,\n    estado,\n    errores,\n    warnings,\n    categoria_rechazo\n  }\n}];"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
@@ -8977,6 +8977,75 @@
       ],
       "id": "b1e2aefc-96d0-47df-9e86-750243659583",
       "name": "Ensamblar prompt"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "={{ $vars.SHEET_ID_CONTROL }}",
+          "mode": "list",
+          "cachedResultName": "AJE_Group_Liquidaciones",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/={{ $vars.SHEET_ID_CONTROL }}/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "={{ \"comprobantes_rechazados\" + ($('Resolver Sucursal').item.json.sucursal_sufijo || '') }}",
+          "mode": "name",
+          "cachedResultName": "comprobantes_rechazados (dinámico)"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "fecha_registro": "={{ $now }}",
+            "phone": "={{ $('Mapeamos datos del mensaje').item.json.phone }}",
+            "guia": "={{ $('Buscamos si tiene sesion activa').item.json.guia }}",
+            "estado": "={{ $('Validar datos').item.json.estado }}",
+            "categoria_rechazo": "={{ $('Validar datos').item.json.categoria_rechazo }}",
+            "motivo_rechazo": "={{ ($('Validar datos').item.json.errores || []).join(' | ') }}",
+            "warnings": "={{ ($('Validar datos').item.json.warnings || []).join(' | ') }}",
+            "score_global": "={{ $('Validar datos').item.json.score_global }}",
+            "error_ia": "={{ $('FILTRAR DATOS').item.json.error || false }}",
+            "motivo_error_ia": "={{ $('FILTRAR DATOS').item.json.motivo_error || '' }}",
+            "legible": "={{ $('FILTRAR DATOS').item.json.legible }}",
+            "monto": "={{ $('FILTRAR DATOS').item.json.monto }}",
+            "monto_confianza": "={{ $('FILTRAR DATOS').item.json.monto_confianza }}",
+            "referencia": "={{ $('FILTRAR DATOS').item.json.referencia }}",
+            "referencia_confianza": "={{ $('FILTRAR DATOS').item.json.referencia_confianza }}",
+            "fecha": "={{ $('FILTRAR DATOS').item.json.fecha }}",
+            "fecha_confianza": "={{ $('FILTRAR DATOS').item.json.fecha_confianza }}",
+            "hora": "={{ $('FILTRAR DATOS').item.json.hora }}",
+            "tipo_pago": "={{ $('FILTRAR DATOS').item.json.tipo_pago }}",
+            "tipo_pago_confianza": "={{ $('FILTRAR DATOS').item.json.tipo_pago_confianza }}",
+            "banco_origen": "={{ $('FILTRAR DATOS').item.json.banco_origen }}",
+            "banco_billetera": "={{ $('FILTRAR DATOS').item.json.banco_billetera }}",
+            "cuenta_origen": "={{ $('FILTRAR DATOS').item.json.cuenta_origen }}",
+            "cuenta_destino": "={{ $('FILTRAR DATOS').item.json.cuenta_destino }}",
+            "nombre_depositante": "={{ $('FILTRAR DATOS').item.json.nombre_depositante }}",
+            "nombre_beneficiario": "={{ $('FILTRAR DATOS').item.json.nombre_beneficiario }}",
+            "agencia": "={{ $('FILTRAR DATOS').item.json.agencia }}",
+            "link_img": "=https://drive.google.com/file/d/{{ $('Guardamos la imagen1').item.json.id }}/view?usp=sharing",
+            "raw_json": "={{ JSON.stringify($('FILTRAR DATOS').item.json) }}"
+          },
+          "matchingColumns": [],
+          "schema": []
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -14516,
+        5872
+      ],
+      "id": "rechazo-log-node-0001",
+      "name": "Registrar rechazo",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "FaAiIXMHXGGQkpkt",
+          "name": "Google Sheets account"
+        }
+      }
     }
   ],
   "pinData": {},
@@ -11142,6 +11211,17 @@
         [
           {
             "node": "ANALIZAR CON GROQ",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Guardamos la imagen1": {
+      "main": [
+        [
+          {
+            "node": "Registrar rechazo",
             "type": "main",
             "index": 0
           }
