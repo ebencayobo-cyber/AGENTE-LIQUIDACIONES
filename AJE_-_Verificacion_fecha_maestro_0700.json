@@ -1,0 +1,285 @@
+{
+  "name": "AJE - Verificacion fecha maestro (07:00)",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 11 * * *"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        1952,
+        512
+      ],
+      "id": "adf46190-a6ec-43a8-8a5c-4c6b2fb58446",
+      "name": "Cron 07:00 BOT (11:00 UTC)"
+    },
+    {
+      "parameters": {
+        "jsCode": "\nconst out = [];\nString($vars.SUCURSALES || 'COM:Santa Cruz').split('|').forEach(par => {\n  const i = par.indexOf(':');\n  const cod = (i >= 0 ? par.slice(0, i) : par).trim().toUpperCase();\n  const nom = (i >= 0 ? par.slice(i + 1) : '').trim() || cod;\n  if (!cod) return;\n  const maestroId = (cod === 'COM')\n    ? $vars.SHEET_ID_MAESTRO\n    : ($vars['MAESTRO_' + cod] || $vars.SHEET_ID_MAESTRO);\n  out.push({ json: { sucursal_codigo: cod, sucursal_nombre: nom, maestro_id: maestroId } });\n});\nreturn out;\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2192,
+        512
+      ],
+      "id": "abc58de4-b24f-4780-bf43-646f9382d27d",
+      "name": "Generar sucursales"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        2432,
+        512
+      ],
+      "id": "87f740a3-4108-4ecf-88f9-757090583c84",
+      "name": "Loop sucursales"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "={{ $json.maestro_id }}",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "Detalle",
+          "mode": "name",
+          "cachedResultName": "Detalle"
+        },
+        "filtersUI": {
+          "values": []
+        },
+        "options": {
+          "returnFirstMatch": true
+        }
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        2672,
+        608
+      ],
+      "id": "a47e1ba1-ccbd-40df-add7-cd148fb428b9",
+      "name": "Leer FE2",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "FaAiIXMHXGGQkpkt",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "\n// La sucursal del lote actual viene emparejada 1:1 desde el Loop\nconst meta = $('Loop sucursales').item.json;\n\n// 'Leer FE2' acaba de leer ESTE maestro; su salida es la entrada directa de este nodo.\n// Tomamos la primera fila de datos (fila 2 del sheet) y la columna 'FE' (celda FE2).\nconst fila = $input.item.json || {};\nlet raw = (fila.FE !== undefined && fila.FE !== null) ? String(fila.FE).trim() : '';\n\nfunction parseDMY(s) {\n  const m = String(s).trim().match(/^(\\d{1,2})[\\/\\-](\\d{1,2})[\\/\\-](\\d{2,4})/);\n  if (!m) return null;\n  let [_, d, mo, y] = m;\n  d=+d; mo=+mo; y=+y; if(y<100) y+=2000;\n  const dt = new Date(y, mo-1, d);\n  return isNaN(dt.getTime()) ? null : dt;\n}\n\nconst hoyStr = $now.toFormat('dd/MM/yyyy');\nconst hoy = parseDMY(hoyStr);\nconst feDate = parseDMY(raw);\nconst soloFecha = dt => dt ? new Date(dt.getFullYear(), dt.getMonth(), dt.getDate()).getTime() : null;\n\nlet desactualizada = false;\nlet motivo = '';\nif (!feDate) {\n  desactualizada = true;\n  motivo = raw ? `formato no reconocido (\"${raw}\")` : 'celda FE2 vacía';\n} else if (soloFecha(feDate) < soloFecha(hoy)) {\n  desactualizada = true;\n  motivo = `tiene fecha ${raw} (debería ser ${hoyStr})`;\n}\n\nreturn [{ json: { ...meta, fe2_valor: raw, fe2_hoy: hoyStr, desactualizada, motivo } }];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2912,
+        608
+      ],
+      "id": "d17a6a3a-c617-4377-8eae-9ba61953c2aa",
+      "name": "Verificar fecha vs hoy"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "={{ $vars.SHEET_ID_CONTROL }}",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "autorizados",
+          "mode": "name",
+          "cachedResultName": "autorizados"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "tipo",
+              "lookupValue": "ADMIN"
+            },
+            {
+              "lookupColumn": "tipo",
+              "lookupValue": "CAJERO"
+            }
+          ]
+        },
+        "combineFilters": "OR",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        2912,
+        400
+      ],
+      "id": "e004e721-d0e7-4d25-b961-a09cc9f56ae9",
+      "name": "Leer autorizados",
+      "executeOnce": true,
+      "alwaysOutputData": true,
+      "retryOnFail": true,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "FaAiIXMHXGGQkpkt",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "\n// Todas las sucursales verificadas vienen del nodo previo (aggregate)\nconst sucs = $('Verificar fecha vs hoy').all().map(i => i.json);\nconst autorizados = $('Leer autorizados').all().map(i => i.json);\n\nconst desfasadas = sucs.filter(s => s.desactualizada);\nif (desfasadas.length === 0) return [];\n\nconst porSuc = {};\nfor (const s of desfasadas) porSuc[s.sucursal_codigo] = s;\n\nconst lineaSuc = s => `   • *${s.sucursal_nombre}*: ${s.motivo}`;\n\nlet textoAdmin = '⚠️ *REVISAR LAS LIQUIDACIONES DE HOY*\\n\\n';\ntextoAdmin += `Hola, me fijé la tabla y vi que hay una fecha antigüa no coincide con hoy en:\\n\\n`;\ntextoAdmin += desfasadas.map(lineaSuc).join('\\n');\ntextoAdmin += `\\n\\n_Por favor actualizar las liquidaciones de cada sucursal indicada._`;\n\nconst out = [];\nfor (const a of autorizados) {\n  const tipo = String(a.tipo || '').trim().toUpperCase();\n  const phone = String(a.phone || '').trim();\n  if (!phone) continue;\n\n  if (tipo === 'ADMIN') {\n    out.push({ json: { phone, texto: textoAdmin, rol: 'ADMIN' } });\n  } else if (tipo === 'CAJERO') {\n    const suc = String(a.sucursal || '').trim().toUpperCase();\n    const info = porSuc[suc];\n    if (info) {\n      let t = '⚠️ *¿CARGASTE LAS LIQUIDACIONES?*\\n\\n';\n      t += `Sucursal *${info.sucursal_nombre}* — *${$now.toFormat('dd/MM/yyyy')}*\\n\\n`;\n      t += `La tabla de liquidaciones ${info.motivo}.\\n\\n`;\n      t += `_Por favor actualizar las liquidaciones de hoy._`;\n      out.push({ json: { phone, texto: t, rol: 'CAJERO', sucursal: suc } });\n    }\n  }\n}\nreturn out;\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        3152,
+        400
+      ],
+      "id": "5abf80d5-c164-45bd-8184-39def7b7f68f",
+      "name": "Armar mensajes por rol"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://graph.facebook.com/v19.0/{{ $vars.WA_PHONE_ID }}/messages",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "whatsAppApi",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"messaging_product\": \"whatsapp\",\n  \"to\": \"{{ $json.phone }}\",\n  \"type\": \"text\",\n  \"text\": {\n    \"body\": {{ JSON.stringify($json.texto) }}\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3392,
+        400
+      ],
+      "id": "461fb3c9-78a2-4923-9f9c-025aa6088421",
+      "name": "Enviar aviso WhatsApp",
+      "credentials": {
+        "whatsAppApi": {
+          "id": "4T8C3J0AOaKU46VD",
+          "name": "WhatsApp account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Cron 07:00 BOT (11:00 UTC)": {
+      "main": [
+        [
+          {
+            "node": "Generar sucursales",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generar sucursales": {
+      "main": [
+        [
+          {
+            "node": "Loop sucursales",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop sucursales": {
+      "main": [
+        [
+          {
+            "node": "Leer autorizados",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Leer FE2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Leer FE2": {
+      "main": [
+        [
+          {
+            "node": "Verificar fecha vs hoy",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Verificar fecha vs hoy": {
+      "main": [
+        [
+          {
+            "node": "Loop sucursales",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Leer autorizados": {
+      "main": [
+        [
+          {
+            "node": "Armar mensajes por rol",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Armar mensajes por rol": {
+      "main": [
+        [
+          {
+            "node": "Enviar aviso WhatsApp",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "a7ac908a-d9cd-4dc5-b5e3-584d032b8c82",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "ce939f814c698f4ea5ecf51dc015e8f0e2a5fc40b0e24608c77a51955fdb69ee"
+  },
+  "nodeGroups": [],
+  "id": "xy9AkoMjOm7c7hjX",
+  "tags": []
+}

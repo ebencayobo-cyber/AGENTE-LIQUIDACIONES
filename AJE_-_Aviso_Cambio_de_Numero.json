@@ -1,0 +1,184 @@
+{
+  "name": "AJE - Aviso Cambio de Numero",
+  "nodes": [
+    {
+      "parameters": {
+        "content": "## 📢 AVISO DE CAMBIO DE NÚMERO (MUDANZA)\n\nWorkflow separado que escucha el **número VIEJO** y responde a cualquiera que escriba, avisando del cambio al número nuevo.\n\n**Configuración requerida (manual):**\n1. El **WhatsApp Trigger** debe usar la credencial OAuth del WABA donde sigue conectado el número viejo.\n2. Reemplazar `WA_PHONE_ID_VIEJO` en el nodo *Enviar aviso (texto)*, *Enviar contacto (vCard)* y *Enviar botón CTA* por el **Phone Number ID del número viejo** (NO el del nuevo).\n3. Verificar/ajustar la variable `WA_NUMERO_NUEVO` (formato Meta sin '+', ej: 59177044204).\n4. Activar el workflow (toggle Active).\n\n**Diseño:** cadena lineal única (sin ramas paralelas). Filtra status updates; solo responde a mensajes entrantes reales.",
+        "height": 420,
+        "width": 520,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -1200,
+        -80
+      ],
+      "id": "a1b2c3d4-0001-0001-0001-000000000001",
+      "name": "Nota Aviso"
+    },
+    {
+      "parameters": {
+        "updates": [
+          "messages"
+        ],
+        "options": {}
+      },
+      "type": "n8n-nodes-base.whatsAppTrigger",
+      "typeVersion": 1,
+      "position": [
+        -608,
+        160
+      ],
+      "id": "a1b2c3d4-0001-0001-0001-000000000002",
+      "name": "Mensaje al numero viejo",
+      "webhookId": "aje-aviso-cambio-numero-trigger",
+      "credentials": {
+        "whatsAppTriggerApi": {
+          "id": "EeHkISJCNw7KLQzb",
+          "name": "WhatsApp OAuth account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// === Extraer phone del mensaje entrante (descarta status updates) ===\n// Soporta doble formato de payload (Meta nativo y traducido).\nconst raw = $input.first().json;\nconst body = raw.body || raw;\n\nconst entry = body?.entry?.[0];\nconst changes = entry?.changes?.[0];\nconst valueMeta = changes?.value;\nconst value = valueMeta || body;\n\nconst messages = value?.messages || value?.mensajes;\nconst message = messages?.[0];\n\n// Si no hay mensaje real (es un status update u otro evento), no continuar.\nif (!message) {\n  return [];\n}\n\nconst phone = message.from || message.de || '';\nif (!phone) {\n  return [];\n}\n\nreturn [{\n  json: {\n    phone: String(phone)\n  }\n}];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -384,
+        160
+      ],
+      "id": "a1b2c3d4-0001-0001-0001-000000000003",
+      "name": "Extraer phone"
+    },
+    {
+      "parameters": {
+        "operation": "send",
+        "phoneNumberId": "WA_PHONE_ID_VIEJO",
+        "recipientPhoneNumber": "={{ $('Extraer phone').item.json.phone }}",
+        "textBody": "={{ \n\"📣 *¡Nos mudamos de número!*\\n\\n\" +\n\"Hola 👋 Este número dejará de estar en servicio.\\n\\n\" +\n\"Para seguir atendiéndote con normalidad, por favor guarda y escríbenos a nuestro *nuevo canal oficial*:\\n\\n\" +\n\"📲 *+\" + $vars.WA_NUMERO_NUEVO + \"*\\n\\n\" +\n\"En el siguiente mensaje te comparto el contacto y un botón para abrir el chat directamente. 👇\"\n}}",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.whatsApp",
+      "typeVersion": 1.1,
+      "position": [
+        -160,
+        160
+      ],
+      "id": "a1b2c3d4-0001-0001-0001-000000000004",
+      "name": "Enviar aviso (texto)",
+      "webhookId": "aje-aviso-cambio-numero-wa1",
+      "credentials": {
+        "whatsAppApi": {
+          "id": "4T8C3J0AOaKU46VD",
+          "name": "WhatsApp account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://graph.facebook.com/v19.0/WA_PHONE_ID_VIEJO/messages",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "whatsAppApi",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"messaging_product\": \"whatsapp\",\n  \"to\": \"{{ $('Extraer phone').item.json.phone }}\",\n  \"type\": \"contacts\",\n  \"contacts\": [\n    {\n      \"name\": {\n        \"formatted_name\": \"AJE - Agente Liquidaciones\",\n        \"first_name\": \"AJE\",\n        \"last_name\": \"Liquidaciones\"\n      },\n      \"org\": {\n        \"company\": \"Industrias AJE Bolivia\"\n      },\n      \"phones\": [\n        {\n          \"phone\": \"+{{ $vars.WA_NUMERO_NUEVO }}\",\n          \"type\": \"WORK\",\n          \"wa_id\": \"{{ $vars.WA_NUMERO_NUEVO }}\"\n        }\n      ]\n    }\n  ]\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        64,
+        160
+      ],
+      "id": "a1b2c3d4-0001-0001-0001-000000000005",
+      "name": "Enviar contacto (vCard)",
+      "credentials": {
+        "whatsAppApi": {
+          "id": "4T8C3J0AOaKU46VD",
+          "name": "WhatsApp account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://graph.facebook.com/v19.0/WA_PHONE_ID_VIEJO/messages",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "whatsAppApi",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"messaging_product\": \"whatsapp\",\n  \"to\": \"{{ $('Extraer phone').item.json.phone }}\",\n  \"type\": \"interactive\",\n  \"interactive\": {\n    \"type\": \"cta_url\",\n    \"body\": {\n      \"text\": \"✨ Toca el botón para abrir directamente nuestro nuevo canal oficial y seguir con tus liquidaciones sin interrupciones.\"\n    },\n    \"action\": {\n      \"name\": \"cta_url\",\n      \"parameters\": {\n        \"display_text\": \"💬 Abrir nuevo chat\",\n        \"url\": \"https://wa.me/{{ $vars.WA_NUMERO_NUEVO }}\"\n      }\n    }\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        288,
+        160
+      ],
+      "id": "a1b2c3d4-0001-0001-0001-000000000006",
+      "name": "Enviar boton CTA",
+      "credentials": {
+        "whatsAppApi": {
+          "id": "4T8C3J0AOaKU46VD",
+          "name": "WhatsApp account"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Mensaje al numero viejo": {
+      "main": [
+        [
+          {
+            "node": "Extraer phone",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extraer phone": {
+      "main": [
+        [
+          {
+            "node": "Enviar aviso (texto)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Enviar aviso (texto)": {
+      "main": [
+        [
+          {
+            "node": "Enviar contacto (vCard)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Enviar contacto (vCard)": {
+      "main": [
+        [
+          {
+            "node": "Enviar boton CTA",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "America/La_Paz"
+  },
+  "active": false
+}

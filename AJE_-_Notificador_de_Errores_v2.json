@@ -1,0 +1,131 @@
+{
+  "name": "AJE - Notificador de Errores (Error Workflow)",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.errorTrigger",
+      "typeVersion": 1,
+      "position": [
+        -340,
+        0
+      ],
+      "id": "4ee0bb9f-2719-4424-80ce-bdff707230d6",
+      "name": "Error Trigger"
+    },
+    {
+      "parameters": {
+        "jsCode": "\n// Prepara variables. Trunca el error porque los params de plantilla no admiten saltos de línea.\nconst j = $input.item.json || {};\nconst workflow = (j.workflow && j.workflow.name) || 'desconocido';\nconst nodo = (j.execution && j.execution.lastNodeExecuted) || 'desconocido';\nlet err = (j.execution && j.execution.error && j.execution.error.message) ? j.execution.error.message : 'sin detalle';\nerr = String(err).replace(/\\s+/g, ' ').trim().slice(0, 250);\nconst hora = $now.toFormat('dd/MM/yyyy HH:mm');\nconst execId = (j.execution && j.execution.id) ? String(j.execution.id) : 's/id';\nreturn [{ json: { workflow, nodo, err, hora, execId } }];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -100,
+        0
+      ],
+      "id": "prep-params",
+      "name": "Preparar parámetros"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://graph.facebook.com/v19.0/{{ $vars.WA_PHONE_ID }}/messages",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "whatsAppApi",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"messaging_product\": \"whatsapp\",\n  \"to\": \"59163332108\",\n  \"type\": \"text\",\n  \"text\": {\n    \"body\": {{ JSON.stringify(\"\\ud83d\\udea8 *ERROR EN N8N*\\n\\n\\ud83d\\udccb *Workflow:* \" + $json.workflow + \"\\n\\ud83d\\udd34 *Nodo:* \" + $json.nodo + \"\\n\\ud83d\\udcac *Error:* \" + $json.err + \"\\n\\ud83d\\udd50 *Hora:* \" + $json.hora + \"\\n\\n\\ud83d\\udd17 ID ejecuci\\u00f3n: \" + $json.execId) }}\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        140,
+        0
+      ],
+      "id": "send-text",
+      "name": "Texto (dentro de 24h)",
+      "credentials": {
+        "whatsAppApi": {
+          "id": "4T8C3J0AOaKU46VD",
+          "name": "WhatsApp account"
+        }
+      },
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://graph.facebook.com/v19.0/{{ $vars.WA_PHONE_ID }}/messages",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "whatsAppApi",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"messaging_product\": \"whatsapp\",\n  \"to\": \"59163332108\",\n  \"type\": \"template\",\n  \"template\": {\n    \"name\": \"alerta_error_n8n\",\n    \"language\": { \"code\": \"es\" },\n    \"components\": [\n      {\n        \"type\": \"body\",\n        \"parameters\": [\n          { \"type\": \"text\", \"text\": {{ JSON.stringify($('Preparar parámetros').item.json.workflow) }} },\n          { \"type\": \"text\", \"text\": {{ JSON.stringify($('Preparar parámetros').item.json.nodo) }} },\n          { \"type\": \"text\", \"text\": {{ JSON.stringify($('Preparar parámetros').item.json.err) }} },\n          { \"type\": \"text\", \"text\": {{ JSON.stringify($('Preparar parámetros').item.json.hora) }} },\n          { \"type\": \"text\", \"text\": {{ JSON.stringify($('Preparar parámetros').item.json.execId) }} }\n        ]\n      }\n    ]\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        380,
+        100
+      ],
+      "id": "send-template",
+      "name": "Plantilla (fuera de 24h)",
+      "credentials": {
+        "whatsAppApi": {
+          "id": "4T8C3J0AOaKU46VD",
+          "name": "WhatsApp account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Error Trigger": {
+      "main": [
+        [
+          {
+            "node": "Preparar parámetros",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Preparar parámetros": {
+      "main": [
+        [
+          {
+            "node": "Texto (dentro de 24h)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Texto (dentro de 24h)": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Plantilla (fuera de 24h)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "1cd3a129-4274-4ddd-9aaa-e4979b6824c8",
+  "meta": {
+    "instanceId": "ce939f814c698f4ea5ecf51dc015e8f0e2a5fc40b0e24608c77a51955fdb69ee"
+  },
+  "nodeGroups": [],
+  "id": "ZeTV3LuJoh7IRhNP",
+  "tags": []
+}

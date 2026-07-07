@@ -1,0 +1,182 @@
+{
+  "name": "AJE - Cierre diario sesiones activas (23:00)",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 3 * * *"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -800,
+        0
+      ],
+      "id": "sched-2300",
+      "name": "Cron 23:00 BOT (03:00 UTC)"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "={{ $vars.SHEET_ID_CONTROL }}",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "sesiones",
+          "mode": "name",
+          "cachedResultName": "sesiones"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "estado",
+              "lookupValue": "ACTIVO"
+            },
+            {
+              "lookupColumn": "s_fecha",
+              "lookupValue": "={{ $now.toFormat('yyyy-MM-dd') }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        -560,
+        0
+      ],
+      "id": "read-ses",
+      "name": "Leer sesiones activas"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "={{ $vars.SHEET_ID_CONTROL }}",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "autorizados",
+          "mode": "name",
+          "cachedResultName": "autorizados"
+        },
+        "filtersUI": {
+          "values": []
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        -300,
+        0
+      ],
+      "id": "read-aut",
+      "name": "Leer autorizados"
+    },
+    {
+      "parameters": {
+        "jsCode": "\n// Entradas en serie:\n//   $('Leer sesiones activas') -> filas estado=ACTIVO s_fecha=hoy\n//   $('Leer autorizados')      -> todos los autorizados\nconst sesiones = $('Leer sesiones activas').all().map(i => i.json);\nconst autorizados = $('Leer autorizados').all().map(i => i.json);\n\nconst nombresSuc = {};\nString($vars.SUCURSALES || 'COM:Santa Cruz').split('|').forEach(par => {\n  const idx = par.indexOf(':');\n  const cod = (idx >= 0 ? par.slice(0, idx) : par).trim().toUpperCase();\n  const nom = (idx >= 0 ? par.slice(idx + 1) : '').trim();\n  if (cod) nombresSuc[cod] = nom || cod;\n});\nconst nombreDe = c => nombresSuc[String(c || '').trim().toUpperCase()] || String(c || '').trim().toUpperCase();\n\nconst activas = sesiones.filter(s => String(s.estado || '').trim().toUpperCase() === 'ACTIVO');\nif (activas.length === 0) return [];\n\nconst porSuc = {};\nfor (const s of activas) {\n  const suc = String(s.sucursal || 'COM').trim().toUpperCase();\n  (porSuc[suc] = porSuc[suc] || []).push(s);\n}\n\nconst lineaSesion = s =>\n  `   • Guía *${s.guia || 's/guia'}*` +\n  (s.transportista ? ` — ${s.transportista}` : '') +\n  (s.phone ? ` (${s.phone})` : '');\n\nlet textoAdmin = '🔴 *SESIONES ACTIVAS SIN CERRAR*\\n\\n';\ntextoAdmin += `Al cierre del día *${$now.toFormat('dd/MM/yyyy')}* quedaron sesiones en estado ACTIVO:\\n`;\nfor (const suc of Object.keys(porSuc).sort()) {\n  textoAdmin += `\\n🏢 *${nombreDe(suc)}* (${porSuc[suc].length}):\\n`;\n  textoAdmin += porSuc[suc].map(lineaSesion).join('\\n') + '\\n';\n}\ntextoAdmin += `\\n_Total: ${activas.length} sesión(es). Por favor coordinar el cierre._`;\n\nconst out = [];\nfor (const a of autorizados) {\n  const tipo = String(a.tipo || '').trim().toUpperCase();\n  const phone = String(a.phone || '').trim();\n  if (!phone) continue;\n\n  if (tipo === 'ADMIN') {\n    out.push({ json: { phone, texto: textoAdmin, rol: 'ADMIN' } });\n  } else if (tipo === 'CAJERO') {\n    const suc = String(a.sucursal || '').trim().toUpperCase();\n    const lista = porSuc[suc];\n    if (lista && lista.length) {\n      let t = '🔴 *SESIONES ACTIVAS SIN CERRAR*\\n\\n';\n      t += `Sucursal *${nombreDe(suc)}* — *${$now.toFormat('dd/MM/yyyy')}*\\n\\n`;\n      t += `Quedaron *${lista.length}* sesión(es) en estado ACTIVO:\\n`;\n      t += lista.map(lineaSesion).join('\\n');\n      t += `\\n\\n_Por favor cerrar las sesiones antes de finalizar el día._`;\n      out.push({ json: { phone, texto: t, rol: 'CAJERO', sucursal: suc } });\n    }\n  }\n}\nreturn out;\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -40,
+        0
+      ],
+      "id": "build-msgs",
+      "name": "Armar mensajes por rol"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://graph.facebook.com/v19.0/{{ $vars.WA_PHONE_ID }}/messages",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "whatsAppApi",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"messaging_product\": \"whatsapp\",\n  \"to\": \"{{ $json.phone }}\",\n  \"type\": \"text\",\n  \"text\": {\n    \"body\": {{ JSON.stringify($json.texto) }}\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        220,
+        0
+      ],
+      "id": "send-wa",
+      "name": "Enviar aviso WhatsApp",
+      "credentials": {
+        "whatsAppApi": {
+          "id": "4T8C3J0AOaKU46VD",
+          "name": "WhatsApp account"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Cron 23:00 BOT (03:00 UTC)": {
+      "main": [
+        [
+          {
+            "node": "Leer sesiones activas",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Leer sesiones activas": {
+      "main": [
+        [
+          {
+            "node": "Leer autorizados",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Leer autorizados": {
+      "main": [
+        [
+          {
+            "node": "Armar mensajes por rol",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Armar mensajes por rol": {
+      "main": [
+        [
+          {
+            "node": "Enviar aviso WhatsApp",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "pinData": {},
+  "meta": {
+    "instanceId": "ce939f814c698f4ea5ecf51dc015e8f0e2a5fc40b0e24608c77a51955fdb69ee"
+  },
+  "tags": []
+}
